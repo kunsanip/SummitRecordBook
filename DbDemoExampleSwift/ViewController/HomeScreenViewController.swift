@@ -12,7 +12,7 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
     @IBOutlet weak var tbStudentData: UITableView!
     var marrStudentData : NSMutableArray!
     
-    
+    var modelManager:ModelManager = ModelManager()
     
     
     @IBAction func txtLogOut(_ sender: AnyObject) {
@@ -36,12 +36,12 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
         if (lblsearch.text! == ""){
             
             print("yes")
-            marrStudentData = ModelManager.getInstance().getSearchResultbyFirstName("%")
+            marrStudentData = modelManager.getInstance().getSearchResultbyFirstName("%")
             refresh()
         }
         else{
             print("no")
-            marrStudentData = ModelManager.getInstance().getSearchResultbyFirstName(lblsearch.text!)
+            marrStudentData = modelManager.getInstance().getSearchResultbyFirstName(lblsearch.text!)
             refresh()
         }
         
@@ -54,12 +54,12 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
         if (lblsearch.text! == ""){
             
             print("yes")
-            marrStudentData = ModelManager.getInstance().getSearchResultbyFirstName("%")
+            marrStudentData = modelManager.getInstance().getSearchResultbyFirstName("%")
             refresh()
         }
         else{
             print("no")
-            marrStudentData = ModelManager.getInstance().getSearchResultbyFirstName(lblsearch.text!)
+            marrStudentData = modelManager.getInstance().getSearchResultbyFirstName(lblsearch.text!)
             refresh()        }
         
     }
@@ -70,7 +70,7 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
         super.viewDidLoad()
         
         self.lblsearch.delegate = self
-        txtCompanyName.text = ModelManager.getInstance().companyName
+        txtCompanyName.text = modelManager.getInstance().companyName
         // Do any additional setup after loading the view.
         
     }
@@ -96,7 +96,7 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
     func getStudentData()
     {
         marrStudentData = NSMutableArray()
-        marrStudentData = ModelManager.getInstance().getAllStudentData()
+        marrStudentData = modelManager.getInstance().getAllStudentData()
         
         refresh()
     }
@@ -105,7 +105,7 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
     func getFirstNameSortedStudentData()
     {
         marrStudentData = NSMutableArray()
-        marrStudentData = ModelManager.getInstance().getSortedByFirstName()
+        marrStudentData = modelManager.getInstance().getSortedByFirstName()
         refresh()
     }
     
@@ -113,31 +113,31 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
     func getLastNameSortedStudentData()
     {
         marrStudentData = NSMutableArray()
-        marrStudentData = ModelManager.getInstance().getSortedByLastName()
+        marrStudentData = modelManager.getInstance().getSortedByLastName()
         refresh()
     }//MARK: EMAIL ADDRESS NAME SORTED
     func getEmailAddressSortedStudentData()
     {
         marrStudentData = NSMutableArray()
-        marrStudentData = ModelManager.getInstance().getSortedByEmailAddress()
+        marrStudentData = modelManager.getInstance().getSortedByEmailAddress()
         refresh()
     }//MARK: PHONE NUMBER NAME SORTED
     func getPhoneNumberSortedStudentData()
     {
         marrStudentData = NSMutableArray()
-        marrStudentData = ModelManager.getInstance().getSortedByPhoneNumber()
+        marrStudentData = modelManager.getInstance().getSortedByPhoneNumber()
         refresh()
     }//MARK: REASON VISIT NAME SORTED
     func getVisitReasonSortedStudentData()
     {
         marrStudentData = NSMutableArray()
-        marrStudentData = ModelManager.getInstance().getSortedByVisitReason()
+        marrStudentData = modelManager.getInstance().getSortedByVisitReason()
         refresh()
     }//MARK: VISITEDON NAME SORTED
     func getVisitedOnSortedStudentData()
     {
         marrStudentData = NSMutableArray()
-        marrStudentData = ModelManager.getInstance().getSortedByVisitedOn()
+        marrStudentData = modelManager.getInstance().getSortedByVisitedOn()
         refresh()    }
     
     //MARK: UITableView delegate methods
@@ -224,7 +224,7 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
             let btnDelete : UIButton = sender as! UIButton
             let selectedIndex : Int = btnDelete.tag
             let customerInfo: CustomerInfo = self.marrStudentData.object(at: selectedIndex) as! CustomerInfo
-            let isDeleted = ModelManager.getInstance().deleteStudentData(customerInfo)
+            let isDeleted = self.modelManager.getInstance().deleteStudentData(customerInfo)
             
             
             if isDeleted {

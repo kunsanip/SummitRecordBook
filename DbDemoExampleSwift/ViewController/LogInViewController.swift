@@ -17,7 +17,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var lblStatus: UILabel!
     
     var marrCredential : NSMutableArray!
-
+    var modelManager: ModelManager = ModelManager()
      
     @IBAction func AboutSummit(_ sender: Any) {
         self.performSegue(withIdentifier: "aboutsegue", sender: sender)
@@ -41,7 +41,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
         
       marrCredential = NSMutableArray()
-      marrCredential = ModelManager.getInstance().getCredential(txtUsername.text!, txtpassword: txtPassword.text!)
+      marrCredential = modelManager.getInstance().getCredential(txtUsername.text!, txtpassword: txtPassword.text!)
         
         
         print(marrCredential.count)

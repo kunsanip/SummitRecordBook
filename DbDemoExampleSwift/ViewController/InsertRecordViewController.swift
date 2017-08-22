@@ -22,7 +22,7 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
     var CompanyEmailHost : String = String()
     var CompanyPortNumber: Int = 0
     
-    
+    var modelManager: ModelManager = ModelManager()
     
     var pickerData: [String] = [String]()
  
@@ -42,12 +42,12 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        companyLabel.text = ModelManager.getInstance().companyName
-        CompanyName = ModelManager.getInstance().companyName
-        CompanyEmailAddress = ModelManager.getInstance().companyAddress
-        CompanyEmailAddressPassword = ModelManager.getInstance().companyEmailPassword
-        CompanyEmailHost = ModelManager.getInstance().emailHost
-        CompanyPortNumber = ModelManager.getInstance().portNumber
+        companyLabel.text = modelManager.getInstance().companyName
+        CompanyName = modelManager.getInstance().companyName
+        CompanyEmailAddress = modelManager.getInstance().companyAddress
+        CompanyEmailAddressPassword = modelManager.getInstance().companyEmailPassword
+        CompanyEmailHost = modelManager.getInstance().emailHost
+        CompanyPortNumber = modelManager.getInstance().portNumber
         validation = Validation()
         emailHandling = Email()
         
@@ -209,7 +209,7 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
                 customerInfo.ReasonVisit = txtVisitReason.text!
                 customerInfo.TimeStamp = dateStamp
                 
-                let isUpdated = ModelManager.getInstance().updateStudentData(customerInfo)
+                let isUpdated = modelManager.getInstance().updateStudentData(customerInfo)
                 if isUpdated {
                     Util.invokeAlertMethod("", strBody: "Record updated successfully.", delegate: nil)
                 } else {
@@ -229,7 +229,7 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
                 customerInfo.TimeStamp = dateStamp
                 
                 
-                let isInserted = ModelManager.getInstance().addStudentData(customerInfo)
+                let isInserted = modelManager.getInstance().addStudentData(customerInfo)
                 if isInserted {
                     Util.invokeAlertMethod("", strBody: "Record Inserted successfully.", delegate: nil)
                 } else {

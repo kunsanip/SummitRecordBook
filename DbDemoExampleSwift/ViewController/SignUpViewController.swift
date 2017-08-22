@@ -25,7 +25,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var txtEmailHost: UITextField!
     
     @IBOutlet weak var txtPortNumber: UITextField!
-    
+    var modelManager: ModelManager = ModelManager()
     var validation: Validation!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +36,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.txtReEnteredPassword.delegate = self;
         
         validation = Validation()
-//        self.txtEmailHost.delegate = self;
-//        self.txtPortNumber.delegate = self;
+        self.txtEmailHost.delegate = self;
+       self.txtPortNumber.delegate = self;
         
 
         // Do any additional setup after loading the view.
@@ -68,8 +68,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         companyInfo.PortNumber = Int(txtPortNumber.text!)!
         
         
-        
-        print(ModelManager.getInstance().checkUsername(companyInfo))
         if(txtUsername.text == "")
         {
             Util.invokeAlertMethod("", strBody: "Please enter username.", delegate: nil)
@@ -88,7 +86,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
        
      
-        else if (ModelManager.getInstance().checkUsername(companyInfo) == false){
+        else if (modelManager.getInstance().checkUsername(companyInfo) == false){
             Util.invokeAlertMethod("", strBody: "This username has already been taken. Please enter different username.", delegate: nil)
 
             
@@ -117,7 +115,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             
         else{
      
-        let isInserted = ModelManager.getInstance().addCompanyData(companyInfo)
+        let isInserted = modelManager.getInstance().addCompanyData(companyInfo)
         if isInserted {
             Util.invokeAlertMethod("", strBody: "Your account has been successfully created.", delegate: nil)
             self.performSegue(withIdentifier: "SignIn", sender: sender)
