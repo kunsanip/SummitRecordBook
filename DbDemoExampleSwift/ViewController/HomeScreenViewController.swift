@@ -5,14 +5,12 @@ import UIKit
 
 
 class HomeScreenViewController: UIViewController , UITableViewDataSource,UITableViewDelegate, UITextFieldDelegate {
-  
+    
     
     @IBOutlet weak var txtCompanyName: UILabel!
-    
-    
-    
     @IBOutlet weak var lblsearch: UITextField!
-    
+    @IBOutlet weak var tbStudentData: UITableView!
+    var marrStudentData : NSMutableArray!
     
     
     
@@ -20,7 +18,7 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
     @IBAction func txtLogOut(_ sender: AnyObject) {
         
         self.performSegue(withIdentifier: "logout1", sender: sender)
-
+        
         
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -39,15 +37,14 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
             
             print("yes")
             marrStudentData = ModelManager.getInstance().getSearchResultbyFirstName("%")
-            tbStudentData.reloadData()
-            
+            refresh()
         }
         else{
             print("no")
             marrStudentData = ModelManager.getInstance().getSearchResultbyFirstName(lblsearch.text!)
-            tbStudentData.reloadData()
+            refresh()
         }
-    
+        
     }
     @IBAction func btnSearch(_ sender: AnyObject) {
         marrStudentData = NSMutableArray()
@@ -57,20 +54,17 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
         if (lblsearch.text! == ""){
             
             print("yes")
-        marrStudentData = ModelManager.getInstance().getSearchResultbyFirstName("%")
-            tbStudentData.reloadData()
-            
+            marrStudentData = ModelManager.getInstance().getSearchResultbyFirstName("%")
+            refresh()
         }
         else{
             print("no")
-        marrStudentData = ModelManager.getInstance().getSearchResultbyFirstName(lblsearch.text!)
-        tbStudentData.reloadData()
-        }
+            marrStudentData = ModelManager.getInstance().getSearchResultbyFirstName(lblsearch.text!)
+            refresh()        }
         
     }
     
-    var marrStudentData : NSMutableArray!
-    @IBOutlet weak var tbStudentData: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,11 +76,14 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
+        
         self.getStudentData()
-
+        
     }
-
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -101,15 +98,15 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
         marrStudentData = NSMutableArray()
         marrStudentData = ModelManager.getInstance().getAllStudentData()
         
-        tbStudentData.reloadData()
+        refresh()
     }
-
+    
     //MARK: FIRST NAME SORTED
     func getFirstNameSortedStudentData()
     {
         marrStudentData = NSMutableArray()
         marrStudentData = ModelManager.getInstance().getSortedByFirstName()
-        tbStudentData.reloadData()
+        refresh()
     }
     
     //MARK: LAST NAME SORTED
@@ -117,32 +114,31 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
     {
         marrStudentData = NSMutableArray()
         marrStudentData = ModelManager.getInstance().getSortedByLastName()
-        tbStudentData.reloadData()
+        refresh()
     }//MARK: EMAIL ADDRESS NAME SORTED
     func getEmailAddressSortedStudentData()
     {
         marrStudentData = NSMutableArray()
         marrStudentData = ModelManager.getInstance().getSortedByEmailAddress()
-        tbStudentData.reloadData()
+        refresh()
     }//MARK: PHONE NUMBER NAME SORTED
     func getPhoneNumberSortedStudentData()
     {
         marrStudentData = NSMutableArray()
         marrStudentData = ModelManager.getInstance().getSortedByPhoneNumber()
-        tbStudentData.reloadData()
+        refresh()
     }//MARK: REASON VISIT NAME SORTED
     func getVisitReasonSortedStudentData()
     {
         marrStudentData = NSMutableArray()
         marrStudentData = ModelManager.getInstance().getSortedByVisitReason()
-        tbStudentData.reloadData()
+        refresh()
     }//MARK: VISITEDON NAME SORTED
     func getVisitedOnSortedStudentData()
     {
         marrStudentData = NSMutableArray()
         marrStudentData = ModelManager.getInstance().getSortedByVisitedOn()
-        tbStudentData.reloadData()
-    }
+        refresh()    }
     
     //MARK: UITableView delegate methods
     
@@ -155,8 +151,8 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
         let customer:CustomerInfo = marrStudentData.object(at: (indexPath as NSIndexPath).row) as! CustomerInfo
         
         
-
-    
+        
+        
         cell.lblContent.text = "\(customer.FirstName)"
         
         
@@ -187,10 +183,10 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
     }
     @IBAction func sortByLastName(_ sender: AnyObject) {
         self.getLastNameSortedStudentData()
-
+        
         
     }
-  
+    
     @IBAction func sortByEmailAddress(_ sender: AnyObject) {
         
         self.getEmailAddressSortedStudentData()
@@ -204,7 +200,7 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
         self.getPhoneNumberSortedStudentData()
         
     }
- 
+    
     @IBAction func sortByVisitReason(_ sender: AnyObject) {
         
         self.getVisitReasonSortedStudentData()
@@ -215,7 +211,7 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
         self.getVisitedOnSortedStudentData()
     }
     
-
+    
     @IBAction func btnDeleteClicked(_ sender: AnyObject) {
         // Create the alert controller
         let alertController = UIAlertController(title: "Warning", message: "Are you sure want to delete this record", preferredStyle: .alert)
@@ -253,17 +249,17 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
         // Present the controller
         self.present(alertController, animated: true, completion: nil)
         
-
+        
     }
-   
-
+    
+    
     @IBAction func btnEditClicked(_ sender: AnyObject)
     {
         self.performSegue(withIdentifier: "editSegue", sender: sender)
     }
     
     //MARK: Navigation methods
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "editSegue")
         {
@@ -275,4 +271,11 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
         }
     }
     
+    
+    private func refresh(){
+        tbStudentData.reloadData()
+        
+        
     }
+    
+}

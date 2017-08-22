@@ -78,7 +78,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     @IBAction func btnSignUp(_ sender: AnyObject) {
         self.performSegue(withIdentifier: "SignUpSegue", sender: sender)
