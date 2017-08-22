@@ -12,14 +12,17 @@ import Foundation
 class CustomerRecordPresenter {
 
     
-    var marrStudentData : NSMutableArray!
-
-    func getStudentData()
-    {
-        marrStudentData = NSMutableArray()
-        marrStudentData = ModelManager.getInstance().getAllStudentData()
-        
-        
-    }
+    
    
+}
+
+//MARK: Validation
+extension CustomerRecordPresenter{
+   
+
+}
+// MARK: Extentions with Email functions
+extension CustomerRecordPresenter{
+
+
 }

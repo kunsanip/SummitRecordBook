@@ -6,58 +6,15 @@ import MessageUI
 class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, MFMailComposeViewControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var scrollview: UIScrollView!
-    var placementAnswer = 0
     @IBOutlet weak var companyLabel: UILabel!
     @IBOutlet weak var Label: UILabel!
-    @IBAction func Submit(_ sender: Any) {
-        
-        if (placementAnswer == 0){
-            
-            txtVisitReason.text = "Renew Visa"
-            
-        }
-            
-        else if (placementAnswer == 1){
-            
-            txtVisitReason.text = "Apply Uni"
-        }
-            
-        else if (placementAnswer == 2 ){
-            txtVisitReason.text = "Apply PR"
-            
-            
-            
-        }
-        else if (placementAnswer == 3 ){
-            txtVisitReason.text = "Apply PSW"
-            
-            
-            
-        }
-        else if (placementAnswer == 4 ){
-            txtVisitReason.text = "Sponsorship"
-            
-            
-            
-        }
-            
-        else  {
-            txtVisitReason.text = "Consult"
-            
-            
-        }
-        
-        
-    }
     @IBOutlet weak var txtFirstName: UITextField!
     @IBOutlet weak var txtLastName: UITextField!
     @IBOutlet weak var txtEmailAddress: UITextField!
-    
     @IBOutlet weak var txtPhoneNumber: UITextField!
-    
     @IBOutlet weak var txtVisitReason: UITextField!
-    
     @IBOutlet weak var picker: UIPickerView!
+    
     
     var CompanyName: String = String()
     var CompanyEmailAddress: String = String()
@@ -68,15 +25,19 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     
     var pickerData: [String] = [String]()
-    
-    @IBAction func txtLogOut(_ sender: AnyObject) {
-        self.performSegue(withIdentifier: "logout2", sender: sender)
-    }
-    
+ 
     var isEdit : Bool = false
     var customerData : CustomerInfo!
     
     
+    //MARK: LYNDA for MVP tranform
+    var validation: Validation!
+    
+    
+    //MARK: LYNDA for MVP transform
+    var emailHandling: Email!
+    
+    var placementAnswer = 0
     
     
     override func viewDidLoad() {
@@ -87,6 +48,9 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
         CompanyEmailAddressPassword = ModelManager.getInstance().companyEmailPassword
         CompanyEmailHost = ModelManager.getInstance().emailHost
         CompanyPortNumber = ModelManager.getInstance().portNumber
+        validation = Validation()
+        emailHandling = Email()
+        
         
         self.txtFirstName.delegate = self;
         self.txtEmailAddress.delegate = self;
@@ -170,21 +134,7 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
         return false
     }
     
-    func isValidEmail(_ email:String!) -> Bool{
-        let emailRegEx = "^(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?(?:(?:(?:[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+(?:\\.[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+)*)|(?:\"(?:(?:(?:(?: )*(?:(?:[!#-Z^-~]|\\[|\\])|(?:\\\\(?:\\t|[ -~]))))+(?: )*)|(?: )+)\"))(?:@)(?:(?:(?:[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)(?:\\.[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)*)|(?:\\[(?:(?:(?:(?:(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))\\.){3}(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))))|(?:(?:(?: )*[!-Z^-~])*(?: )*)|(?:[Vv][0-9A-Fa-f]+\\.[-A-Za-z0-9._~!$&'()*+,;=:]+))\\])))(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?$"
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        let result = emailTest.evaluate(with: email)
-        return result
-    }
-    
-    func validatePhone(_ phonenumber: String) -> Bool {
-        let PHONE_REGEX = "^\\d{3}\\d{3}\\d{4}$"
-        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
-        let result =  phoneTest.evaluate(with: phonenumber)
-        return result
-    }
-    
-    //MARK: UIButton Action methods
+        //MARK: UIButton Action methods
     
     @IBAction func btnBackClicked(_ sender: AnyObject)
     {
@@ -196,14 +146,8 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
         
         let email:String = txtEmailAddress.text!
         let phone:String = txtPhoneNumber.text!
-        let emailVal:Bool = isValidEmail(email)
-        let phoneVal:Bool = validatePhone(phone)
-        
-        
-        
-        
-        
-        
+        let emailVal:Bool = validation.isValidEmail(email)
+        let phoneVal:Bool = validation.validatePhone(phone)
         let now = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy'"
@@ -288,139 +232,68 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
                     Util.invokeAlertMethod("", strBody: "Error in inserting record.", delegate: nil)
                 }
             }
-            //MailCore(name: txtFirstName.text!,emailAddress: txtEmailAddress.text!)
-            MailCoreUser(name: txtFirstName.text!, emailAddress: txtEmailAddress.text!, companyName: CompanyName, companyAddress: CompanyEmailAddress, companyPassword: CompanyEmailAddressPassword, companyHost: CompanyEmailHost, companyPortNumber: CompanyPortNumber)
-             MailCoreCompany(name: txtFirstName.text!, emailAddress: txtEmailAddress.text!, companyName: CompanyName, companyEmailAddress: CompanyEmailAddress, companyPassword: CompanyEmailAddressPassword, companyHost: CompanyEmailHost,companyPortNumber: CompanyPortNumber)
+            //emailHandling.MailCore(name: txtFirstName.text!,emailAddress: txtEmailAddress.text!)
+            
+            
+            emailHandling.MailCoreUser(name: txtFirstName.text!, emailAddress: txtEmailAddress.text!, companyName: CompanyName, companyAddress: CompanyEmailAddress, companyPassword: CompanyEmailAddressPassword, companyHost: CompanyEmailHost, companyPortNumber: CompanyPortNumber)
+            
+            emailHandling.MailCoreCompany(name: txtFirstName.text!, emailAddress: txtEmailAddress.text!, companyName: CompanyName, companyEmailAddress: CompanyEmailAddress, companyPassword: CompanyEmailAddressPassword, companyHost: CompanyEmailHost,companyPortNumber: CompanyPortNumber)
             self.navigationController?.popViewController(animated: true)
         }
     }
     
     
-    // This one is used at the moment: 2nd app submission
-    private func MailCore( name: String, emailAddress:String){
         
-        let smtpSession = MCOSMTPSession()
-        smtpSession.hostname = "smtp.gmail.com"
-        smtpSession.username = "sanipcr7@gmail.com"
-        smtpSession.password = "Cristiano7"
-        smtpSession.port = 465
-        smtpSession.authType = MCOAuthType.saslPlain
-        smtpSession.connectionType = MCOConnectionType.TLS
-        smtpSession.connectionLogger = {(connectionID, type, data) in
-            if data != nil {
-                if let string = NSString(data: data!, encoding: String.Encoding.utf8.rawValue){
-                    NSLog("Connectionlogger: \(string)")
-                }
-            }
-        }
-        var sanip: String  = String()
-        sanip = emailAddress
-        let builder = MCOMessageBuilder()
-        builder.header.to = [MCOAddress(displayName: name, mailbox: sanip)]
-        
-        builder.header.from = MCOAddress(displayName: "Sanip Shrestha", mailbox: "brothers@gmail.com")
-        builder.header.subject = ""
-        builder.htmlBody = "Hi \(name), <br>Thank you for visiting us! <br>You have been successfully registered in our Record Book."
-        
-        let rfc822Data = builder.data()
-        let sendOperation = smtpSession.sendOperation(with: rfc822Data!)
-        sendOperation?.start { (error) -> Void in
-            if (error != nil) {
-                NSLog("Error sending email: \(String(describing: error))")
-            } else {
-                NSLog("Successfully sent email!")
-            }
-        }
-    }
-    
-    //This method is necessary for ideal scenario when sending email
-    private func MailCoreUser( name: String, emailAddress:String, companyName: String, companyAddress: String, companyPassword: String, companyHost: String, companyPortNumber: Int){
-        
-        print(companyHost)
-        print(companyName)
-        print(companyAddress)
-        print(companyPassword)
-        print(companyPortNumber)
-        
-        let smtpSession = MCOSMTPSession()
-        smtpSession.hostname = companyHost
-        smtpSession.username = companyAddress
-        smtpSession.password = companyPassword
-        smtpSession.port = UInt32(companyPortNumber)
-        smtpSession.authType = MCOAuthType.saslPlain
-        smtpSession.connectionType = MCOConnectionType.TLS
-        smtpSession.connectionLogger = {(connectionID, type, data) in
-            if data != nil {
-                if let string = NSString(data: data!, encoding: String.Encoding.utf8.rawValue){
-                    NSLog("Connectionlogger: \(string)")
-                }
-            }
-        }
-        var sanip: String  = String()
-        sanip = emailAddress
-        let builder = MCOMessageBuilder()
-        builder.header.to = [MCOAddress(displayName: name, mailbox: sanip)]
-        
-        builder.header.from = MCOAddress(displayName: companyName, mailbox: "noreply")
-        builder.header.subject = "Thank you for visiting us."
-        builder.htmlBody = "Hi \(name), <br><br>You have been successfully registered in our Record Book.<br><br>Thank you for visiting us! <br><br>Kind regards,<br>\(companyName)"
-        
-        let rfc822Data = builder.data()
-        let sendOperation = smtpSession.sendOperation(with: rfc822Data!)
-        sendOperation?.start { (error) -> Void in
-            if (error != nil) {
-                NSLog("Error sending email: \(String(describing: error))")
-            } else {
-                NSLog("Successfully sent email!")
-            }
-        }
-    }
-    
-    //Ideal scenario for sending company email 
-    private func MailCoreCompany( name: String, emailAddress:String, companyName:String, companyEmailAddress:String, companyPassword: String, companyHost: String, companyPortNumber: Int){
-        
-        let smtpSession = MCOSMTPSession()
-        smtpSession.hostname = companyHost
-        smtpSession.username = companyEmailAddress
-        smtpSession.password = companyPassword
-        smtpSession.port = UInt32(companyPortNumber)
-        smtpSession.authType = MCOAuthType.saslPlain
-        smtpSession.connectionType = MCOConnectionType.TLS
-        smtpSession.connectionLogger = {(connectionID, type, data) in
-            if data != nil {
-                if let string = NSString(data: data!, encoding: String.Encoding.utf8.rawValue){
-                    NSLog("Connectionlogger: \(string)")
-                }
-            }
-        }
-        var userEmail: String = String()
-        userEmail = emailAddress
-        
-        var companyAddress: String  = String()
-        companyAddress = companyEmailAddress
-        let builder = MCOMessageBuilder()
-        builder.header.to = [MCOAddress(displayName: "Summit Record Book", mailbox: companyAddress)]
-        builder.header.from = MCOAddress(displayName: "Summit Record Book", mailbox: "Headquarter")
-        builder.header.subject = "New customer has been recorded in Summit Record Book."
-        builder.htmlBody = "<br><h3>Customer Detail</h3><p>Name: \(name) </p><p>Email: \(userEmail)"
-        
-        
-        let rfc822Data = builder.data()
-        let sendOperation = smtpSession.sendOperation(with: rfc822Data!)
-        sendOperation?.start { (error) -> Void in
-            if (error != nil) {
-                NSLog("Error sending email: \(String(describing: error))")
-            } else {
-                NSLog("Successfully sent email!")
-            }
-        }
-    }
-
-    
     @IBAction func didEndOnExit(_ sender: Any) {
         
         
         self.resignFirstResponder()
     }
+    
+    @IBAction func Submit(_ sender: Any) {
+        
+        if (placementAnswer == 0){
+            
+            txtVisitReason.text = "Renew Visa"
+            
+        }
+            
+        else if (placementAnswer == 1){
+            
+            txtVisitReason.text = "Apply Uni"
+        }
+            
+        else if (placementAnswer == 2 ){
+            txtVisitReason.text = "Apply PR"
+            
+            
+            
+        }
+        else if (placementAnswer == 3 ){
+            txtVisitReason.text = "Apply PSW"
+            
+            
+            
+        }
+        else if (placementAnswer == 4 ){
+            txtVisitReason.text = "Sponsorship"
+            
+            
+            
+        }
+            
+        else  {
+            txtVisitReason.text = "Consult"
+            
+            
+        }
+        
+        
+    }
+    
+    @IBAction func txtLogOut(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "logout2", sender: sender)
+    }
+    
     
 }

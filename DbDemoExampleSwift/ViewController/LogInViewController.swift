@@ -94,42 +94,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         return false
     }
-    
-    func MailCore(){
-       
-            
-            var smtpSession = MCOSMTPSession()
-            smtpSession.hostname = "smtp.live.com"
-            smtpSession.username = "sanip_7@live.com"
-            smtpSession.password = "Cristiano7"
-            smtpSession.port = 587
-            //        smtpSession.authType = MCOAuthType.saslPlain
-            smtpSession.connectionType = MCOConnectionType.TLS
-            smtpSession.connectionLogger = {(connectionID, type, data) in
-                if data != nil {
-                    if let string = NSString(data: data!, encoding: String.Encoding.utf8.rawValue){
-                        NSLog("Connectionlogger: \(string)")
-                    }
-                }
-            }
-            
-            var builder = MCOMessageBuilder()
-            builder.header.to = [MCOAddress(displayName: "Rool", mailbox: "sanip_7@live.com")]
-            builder.header.from = MCOAddress(displayName: "Matt R", mailbox: "sanipcr7@gmail.com")
-            builder.header.subject = "My message"
-            builder.htmlBody = "Yo Rool, this is a test message!"
-            
-            let rfc822Data = builder.data()
-            let sendOperation = smtpSession.sendOperation(with: rfc822Data)
-            sendOperation?.start { (error) -> Void in
-                if (error != nil) {
-                    NSLog("Error sending email: \(error)")
-                } else {
-                    NSLog("Successfully sent email!")
-                }
-            }
-
-        }}
+   }
    
 
 
