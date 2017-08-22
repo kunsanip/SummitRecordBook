@@ -25,6 +25,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var txtEmailHost: UITextField!
     
     @IBOutlet weak var txtPortNumber: UITextField!
+    
+    var validation: Validation!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.txtUsername.delegate = self;
@@ -32,6 +34,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.txtEmailAddress.delegate = self;
         self.txtCompanyName.delegate = self;
         self.txtReEnteredPassword.delegate = self;
+        
+        validation = Validation()
 //        self.txtEmailHost.delegate = self;
 //        self.txtPortNumber.delegate = self;
         
@@ -50,7 +54,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func btnSignUp(_ sender: AnyObject) {
        
-        let emailVal:Bool = isValidEmail(txtEmailAddress.text!)
+        let emailVal:Bool = validation.isValidEmail(txtEmailAddress.text!)
 
         let companyInfo: CompanyInfo = CompanyInfo()
         
@@ -126,12 +130,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
 
     }
-    func isValidEmail(_ email:String!) -> Bool{
-        let emailRegEx = "^(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?(?:(?:(?:[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+(?:\\.[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+)*)|(?:\"(?:(?:(?:(?: )*(?:(?:[!#-Z^-~]|\\[|\\])|(?:\\\\(?:\\t|[ -~]))))+(?: )*)|(?: )+)\"))(?:@)(?:(?:(?:[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)(?:\\.[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)*)|(?:\\[(?:(?:(?:(?:(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))\\.){3}(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))))|(?:(?:(?: )*[!-Z^-~])*(?: )*)|(?:[Vv][0-9A-Fa-f]+\\.[-A-Za-z0-9._~!$&'()*+,;=:]+))\\])))(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?$"
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        let result = emailTest.evaluate(with: email)
-        return result
-    }
+ 
    
     @IBAction func btnIHaveAccount(_ sender: Any) {
         
