@@ -8,8 +8,8 @@
 import UIKit
 import CoreData
 //Global shared Instance
-let sharedInstance = DatabaseLayer()
-class DatabaseLayer: NSObject {
+let sharedInstance = DataLayer()
+class DataLayer: NSObject {
     
     var database: FMDatabase? = nil
     var username: String = String()
