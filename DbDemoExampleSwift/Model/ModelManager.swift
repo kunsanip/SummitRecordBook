@@ -6,11 +6,11 @@ import CoreData
 class ModelManager: NSObject {
     
     
-    fileprivate var databaseLayer = DatabaseLayer()
+    fileprivate var databaseLayer = DataLayer()
 
 
     
-     func getInstance() -> DatabaseLayer
+     func getInstance() -> DataLayer
     {
         if(sharedInstance.database == nil)
         {

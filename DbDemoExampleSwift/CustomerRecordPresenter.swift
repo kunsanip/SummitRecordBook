@@ -19,7 +19,7 @@ class CustomerRecordPresenter {
 //MARK: Home Screen View Controller Presenter
 extension CustomerRecordPresenter{
 
-    
+     
     func getCustomerData()
     {
         marrCustomerData = NSMutableArray()
