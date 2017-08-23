@@ -8,17 +8,7 @@
 
 import UIKit
 
-class LogInPresenter{
 
-    var marrCredential : NSMutableArray!
-    var modelManager: ModelManager = ModelManager()
-    
-    func getProfile(username: String, password: String) -> NSMutableArray{
-        marrCredential = NSMutableArray()
-        marrCredential = modelManager.getInstance().getCredential(username, txtpassword: password)
-        return marrCredential
-    }
-}
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
   

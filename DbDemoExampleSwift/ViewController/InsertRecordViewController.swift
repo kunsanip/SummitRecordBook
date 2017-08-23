@@ -22,35 +22,26 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
     var CompanyEmailHost : String = String()
     var CompanyPortNumber: Int = 0
     
-    var modelManager: ModelManager = ModelManager()
-    
+    var presenter : InsertRecordPresenter = InsertRecordPresenter()
     var pickerData: [String] = [String]()
  
     var isEdit : Bool = false
     var customerData : CustomerInfo!
     
     
-    //MARK: LYNDA for MVP tranform
-    var validation: Validation!
-    
-    
-    //MARK: LYNDA for MVP transform
-    var emailHandling: Email!
     
     var placementAnswer = 0
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        companyLabel.text = modelManager.getInstance().companyName
-        CompanyName = modelManager.getInstance().companyName
-        CompanyEmailAddress = modelManager.getInstance().companyAddress
-        CompanyEmailAddressPassword = modelManager.getInstance().companyEmailPassword
-        CompanyEmailHost = modelManager.getInstance().emailHost
-        CompanyPortNumber = modelManager.getInstance().portNumber
-        validation = Validation()
-        emailHandling = Email()
-        
+        companyLabel.text = presenter.modelManager.getInstance().companyName
+        CompanyName = presenter.modelManager.getInstance().companyName
+        CompanyEmailAddress = presenter.modelManager.getInstance().companyAddress
+        CompanyEmailAddressPassword = presenter.modelManager.getInstance().companyEmailPassword
+        CompanyEmailHost = presenter.modelManager.getInstance().emailHost
+        CompanyPortNumber = presenter.modelManager.getInstance().portNumber
+ 
         
         self.txtFirstName.delegate = self;
         self.txtEmailAddress.delegate = self;
@@ -150,8 +141,8 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
         
         let email:String = txtEmailAddress.text!
         let phone:String = txtPhoneNumber.text!
-        let emailVal:Bool = validation.isValidEmail(email)
-        let phoneVal:Bool = validation.validatePhone(phone)
+        let emailVal:Bool = presenter.validation.isValidEmail(email)
+        let phoneVal:Bool = presenter.validation.validatePhone(phone)
         let now = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy'"
@@ -209,7 +200,10 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
                 customerInfo.ReasonVisit = txtVisitReason.text!
                 customerInfo.TimeStamp = dateStamp
                 
-                let isUpdated = modelManager.getInstance().updateStudentData(customerInfo)
+                let isUpdated = presenter.updateRecord(customerInfo: customerInfo)
+                
+                
+                //If updated show successful message else show error message
                 if isUpdated {
                     Util.invokeAlertMethod("", strBody: "Record updated successfully.", delegate: nil)
                 } else {
@@ -229,7 +223,8 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
                 customerInfo.TimeStamp = dateStamp
                 
                 
-                let isInserted = modelManager.getInstance().addStudentData(customerInfo)
+                let isInserted = presenter.updateRecord(customerInfo: customerInfo)
+                
                 if isInserted {
                     Util.invokeAlertMethod("", strBody: "Record Inserted successfully.", delegate: nil)
                 } else {
@@ -239,9 +234,10 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
             //emailHandling.MailCore(name: txtFirstName.text!,emailAddress: txtEmailAddress.text!)
             
             
-            emailHandling.MailCoreUser(name: txtFirstName.text!, emailAddress: txtEmailAddress.text!, companyName: CompanyName, companyAddress: CompanyEmailAddress, companyPassword: CompanyEmailAddressPassword, companyHost: CompanyEmailHost, companyPortNumber: CompanyPortNumber)
+            presenter.sendCustomerEmail(name: txtFirstName.text!, emailAddress: txtEmailAddress.text!, companyName: CompanyName, companyAddress: CompanyEmailAddress, companyPassword: CompanyEmailAddressPassword, companyHost: CompanyEmailHost, companyPortNumber: CompanyPortNumber)
             
-            emailHandling.MailCoreCompany(name: txtFirstName.text!, emailAddress: txtEmailAddress.text!, companyName: CompanyName, companyEmailAddress: CompanyEmailAddress, companyPassword: CompanyEmailAddressPassword, companyHost: CompanyEmailHost,companyPortNumber: CompanyPortNumber)
+            presenter.sendCompanyEmail(name: txtFirstName.text!, emailAddress: txtEmailAddress.text!, companyName: CompanyName, companyAddress: CompanyEmailAddress, companyPassword: CompanyEmailAddressPassword, companyHost: CompanyEmailHost,companyPortNumber: CompanyPortNumber)
+            
             self.navigationController?.popViewController(animated: true)
         }
     }
