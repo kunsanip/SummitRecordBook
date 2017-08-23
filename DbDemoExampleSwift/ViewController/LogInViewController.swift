@@ -8,6 +8,18 @@
 
 import UIKit
 
+class LogInPresenter{
+
+    var marrCredential : NSMutableArray!
+    var modelManager: ModelManager = ModelManager()
+    
+    func getProfile(username: String, password: String) -> NSMutableArray{
+        marrCredential = NSMutableArray()
+        marrCredential = modelManager.getInstance().getCredential(username, txtpassword: password)
+        return marrCredential
+    }
+}
+
 class LogInViewController: UIViewController, UITextFieldDelegate {
   
     
@@ -16,9 +28,30 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var lblStatus: UILabel!
     
-    var marrCredential : NSMutableArray!
-    var modelManager: ModelManager = ModelManager()
-     
+    var presenter:LogInPresenter = LogInPresenter()
+    
+    override func viewDidLoad() {
+        
+        self.txtUsername.delegate = self
+        self.txtPassword.delegate = self
+        super.viewDidLoad()
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    @IBAction func btnSignUp(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "SignUpSegue", sender: sender)
+        
+    }
+
+    
     @IBAction func AboutSummit(_ sender: Any) {
         self.performSegue(withIdentifier: "aboutsegue", sender: sender)
 
@@ -33,60 +66,26 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         {
             Util.invokeAlertMethod("", strBody: "Please enter password.", delegate: nil)
         }
-
+        else{}
+      
+        let loginstatus:NSMutableArray! = presenter.getProfile(username: txtUsername.text!, password: txtPassword.text!)
         
-        print(txtUsername.text!)
-        print(txtPassword.text!)
-
-        
-        
-      marrCredential = NSMutableArray()
-      marrCredential = modelManager.getInstance().getCredential(txtUsername.text!, txtpassword: txtPassword.text!)
-        
-        
-        print(marrCredential.count)
-        
-        
-            
-            
-        
-        if (marrCredential.count == 1){
-            self.performSegue(withIdentifier: "loginsegue", sender: sender)
-
-        }
+        //checking if there is entity in loginstatus
+        if (loginstatus.count == 1){
+            self.performSegue(withIdentifier: "loginsegue", sender: sender)}
         else{
             Util.invokeAlertMethod("Incorrect Username/Password", strBody: "Please try again", delegate: nil)
 
 
         }
-        
-        
+    
+    
         
 
     }
   
     
-    override func viewDidLoad() {
-        
-        self.txtUsername.delegate = self
-        self.txtPassword.delegate = self
-        super.viewDidLoad()
-       
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-    
-    @IBAction func btnSignUp(_ sender: AnyObject) {
-        self.performSegue(withIdentifier: "SignUpSegue", sender: sender)
-
-    }
-    //MARK: UIButton Action methods
+       //MARK: UIButton Action methods
     
     @IBAction func btnBackClicked(_ sender: AnyObject)
     {

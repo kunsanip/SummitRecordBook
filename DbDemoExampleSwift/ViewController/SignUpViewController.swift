@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var txtUsername: UITextField!
@@ -25,8 +27,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var txtEmailHost: UITextField!
     
     @IBOutlet weak var txtPortNumber: UITextField!
-    var modelManager: ModelManager = ModelManager()
-    var validation: Validation!
+  
+    fileprivate var presenter: SignUpPresenter!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.txtUsername.delegate = self;
@@ -34,12 +37,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.txtEmailAddress.delegate = self;
         self.txtCompanyName.delegate = self;
         self.txtReEnteredPassword.delegate = self;
-        
-        validation = Validation()
         self.txtEmailHost.delegate = self;
        self.txtPortNumber.delegate = self;
-        
-
+        presenter = SignUpPresenter()
         // Do any additional setup after loading the view.
     }
     override var prefersStatusBarHidden: Bool {
@@ -54,10 +54,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func btnSignUp(_ sender: AnyObject) {
        
-        let emailVal:Bool = validation.isValidEmail(txtEmailAddress.text!)
-
+        let emailVal:Bool = presenter.emailValidation(emailAddress: txtEmailAddress.text!)
         let companyInfo: CompanyInfo = CompanyInfo()
-        
         
         companyInfo.Username = txtUsername.text!
         companyInfo.Password = txtPassword.text!
@@ -86,7 +84,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
        
      
-        else if (modelManager.getInstance().checkUsername(companyInfo) == false){
+        else if (presenter.checkUsername(companyInfo: companyInfo) == false){
             Util.invokeAlertMethod("", strBody: "This username has already been taken. Please enter different username.", delegate: nil)
 
             
@@ -115,7 +113,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             
         else{
      
-        let isInserted = modelManager.getInstance().addCompanyData(companyInfo)
+        let isInserted = presenter.addCompanyData(companyInfo: companyInfo)
         if isInserted {
             Util.invokeAlertMethod("", strBody: "Your account has been successfully created.", delegate: nil)
             self.performSegue(withIdentifier: "SignIn", sender: sender)

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4C971E121BBE4BA7008411F6 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C971E111BBE4BA6008411F6 /* libsqlite3.0.tbd */; };
 		8404B9481D9BE1D900FA13C4 /* customerDB.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8404B9471D9BD0DA00FA13C4 /* customerDB.sqlite */; };
-		84BECC651D9A4753007D94F4 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BECC641D9A4753007D94F4 /* LogInViewController.swift */; };
 		84BECC691D9A4A9E007D94F4 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BECC681D9A4A9E007D94F4 /* Credential.swift */; };
 		84BECC6D1D9AA06D007D94F4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BECC6C1D9AA06D007D94F4 /* Launch Screen.storyboard */; };
 		84BECC6F1D9B7F50007D94F4 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BECC6E1D9B7F50007D94F4 /* SignUpViewController.swift */; };
@@ -25,6 +24,8 @@
 		D296D4631F4C6F3800FE3F60 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D296D4621F4C6F3800FE3F60 /* Validation.swift */; };
 		D296D46C1F4C706500FE3F60 /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = D296D46B1F4C706500FE3F60 /* Email.swift */; };
 		D296D46F1F4C7C5400FE3F60 /* DatabaseLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D296D46E1F4C7C5400FE3F60 /* DatabaseLayer.swift */; };
+		D296D4711F4D32D700FE3F60 /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D296D4701F4D32D700FE3F60 /* SignUpPresenter.swift */; };
+		D296D47B1F4D3A7800FE3F60 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D296D47A1F4D3A7800FE3F60 /* LogInViewController.swift */; };
 		EAD5F4CB1B7A073200EBC695 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5F4CA1B7A073200EBC695 /* AppDelegate.swift */; };
 		EAD5F5021B7A080700EBC695 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5F4FF1B7A080700EBC695 /* ModelManager.swift */; };
 		EAD5F5031B7A080700EBC695 /* CustomerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5F5001B7A080700EBC695 /* CustomerInfo.swift */; };
@@ -115,7 +116,6 @@
 		4C971E111BBE4BA6008411F6 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		8404B9471D9BD0DA00FA13C4 /* customerDB.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = customerDB.sqlite; path = ../customerDB.sqlite; sourceTree = "<group>"; };
 		84B256971D9382E200293392 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		84BECC641D9A4753007D94F4 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		84BECC681D9A4A9E007D94F4 /* Credential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		84BECC6C1D9AA06D007D94F4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		84BECC6E1D9B7F50007D94F4 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +129,8 @@
 		D296D4621F4C6F3800FE3F60 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		D296D46B1F4C706500FE3F60 /* Email.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
 		D296D46E1F4C7C5400FE3F60 /* DatabaseLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseLayer.swift; sourceTree = "<group>"; };
+		D296D4701F4D32D700FE3F60 /* SignUpPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
+		D296D47A1F4D3A7800FE3F60 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		EAD5F4C51B7A073200EBC695 /* Customer Record Summit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Customer Record Summit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAD5F4C91B7A073200EBC695 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAD5F4CA1B7A073200EBC695 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -217,6 +219,48 @@
 			name = Database;
 			sourceTree = "<group>";
 		};
+		D296D4731F4D37F600FE3F60 /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				D296D45F1F4C3AE300FE3F60 /* CustomerRecordPresenter.swift */,
+				EAD5F52B1B7A126200EBC695 /* HomeScreenViewController.swift */,
+			);
+			name = HomeScreen;
+			sourceTree = "<group>";
+		};
+		D296D4741F4D380B00FE3F60 /* SignUpScreen */ = {
+			isa = PBXGroup;
+			children = (
+				84BECC6E1D9B7F50007D94F4 /* SignUpViewController.swift */,
+				D296D4701F4D32D700FE3F60 /* SignUpPresenter.swift */,
+			);
+			name = SignUpScreen;
+			sourceTree = "<group>";
+		};
+		D296D4751F4D381500FE3F60 /* LogInScreen */ = {
+			isa = PBXGroup;
+			children = (
+				D296D47A1F4D3A7800FE3F60 /* LogInViewController.swift */,
+			);
+			name = LogInScreen;
+			sourceTree = "<group>";
+		};
+		D296D4761F4D381D00FE3F60 /* InsertRecord Screen */ = {
+			isa = PBXGroup;
+			children = (
+				EAD5F52D1B7A127800EBC695 /* InsertRecordViewController.swift */,
+			);
+			name = "InsertRecord Screen";
+			sourceTree = "<group>";
+		};
+		D296D4771F4D3A1E00FE3F60 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Presenter;
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		EAD5F4BC1B7A073200EBC695 = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +295,7 @@
 				EAD5F4EC1B7A076F00EBC695 /* ThirdParty */,
 				EAD5F52F1B7A18B600EBC695 /* UITableViewCell */,
 				EAD5F4FE1B7A07E900EBC695 /* Model */,
+				D296D4771F4D3A1E00FE3F60 /* Presenter */,
 				EAD5F4F91B7A078D00EBC695 /* ViewController */,
 				D296D45E1F4C207100FE3F60 /* Objective C-Swift Headers */,
 				EAD5F4C81B7A073200EBC695 /* Supporting Files */,
@@ -295,11 +340,10 @@
 		EAD5F4F91B7A078D00EBC695 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D296D45F1F4C3AE300FE3F60 /* CustomerRecordPresenter.swift */,
-				EAD5F52B1B7A126200EBC695 /* HomeScreenViewController.swift */,
-				84BECC6E1D9B7F50007D94F4 /* SignUpViewController.swift */,
-				84BECC641D9A4753007D94F4 /* LogInViewController.swift */,
-				EAD5F52D1B7A127800EBC695 /* InsertRecordViewController.swift */,
+				D296D4731F4D37F600FE3F60 /* HomeScreen */,
+				D296D4741F4D380B00FE3F60 /* SignUpScreen */,
+				D296D4751F4D381500FE3F60 /* LogInScreen */,
+				D296D4761F4D381D00FE3F60 /* InsertRecord Screen */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -518,12 +562,13 @@
 			files = (
 				EAD5F5041B7A080700EBC695 /* Util.swift in Sources */,
 				EAD5F52C1B7A126200EBC695 /* HomeScreenViewController.swift in Sources */,
-				84BECC651D9A4753007D94F4 /* LogInViewController.swift in Sources */,
 				EAD5F4CB1B7A073200EBC695 /* AppDelegate.swift in Sources */,
 				EAD5F5021B7A080700EBC695 /* ModelManager.swift in Sources */,
 				EAD5F5221B7A0ADE00EBC695 /* FMDatabase.m in Sources */,
+				D296D4711F4D32D700FE3F60 /* SignUpPresenter.swift in Sources */,
 				D296D46F1F4C7C5400FE3F60 /* DatabaseLayer.swift in Sources */,
 				D296D4631F4C6F3800FE3F60 /* Validation.swift in Sources */,
+				D296D47B1F4D3A7800FE3F60 /* LogInViewController.swift in Sources */,
 				EAD5F5311B7A18D800EBC695 /* StudentCell.swift in Sources */,
 				EAD5F5251B7A0ADE00EBC695 /* FMResultSet.m in Sources */,
 				EAD5F52E1B7A127800EBC695 /* InsertRecordViewController.swift in Sources */,

@@ -7,7 +7,7 @@
 //
 import UIKit
 import CoreData
-
+//Global shared Instance
 let sharedInstance = DatabaseLayer()
 class DatabaseLayer: NSObject {
     

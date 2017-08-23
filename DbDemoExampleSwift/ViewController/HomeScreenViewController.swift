@@ -12,15 +12,15 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
     @IBOutlet weak var tbCustomerData: UITableView!
     var marrCustomerData : NSMutableArray!
     
-    var modelManager:ModelManager = ModelManager()
-    var presenter:CustomerRecordPresenter = CustomerRecordPresenter()
+        var presenter:CustomerRecordPresenter = CustomerRecordPresenter()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.lblsearch.delegate = self
-        txtCompanyName.text = modelManager.getInstance().companyName
+    
+        txtCompanyName.text = presenter.modelManager.getInstance().companyName
         
         
         // Do any additional setup after loading the view.
