@@ -9,11 +9,37 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
     
     @IBOutlet weak var txtCompanyName: UILabel!
     @IBOutlet weak var lblsearch: UITextField!
-    @IBOutlet weak var tbStudentData: UITableView!
-    var marrStudentData : NSMutableArray!
+    @IBOutlet weak var tbCustomerData: UITableView!
+    var marrCustomerData : NSMutableArray!
     
     var modelManager:ModelManager = ModelManager()
+    var presenter:CustomerRecordPresenter = CustomerRecordPresenter()
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.lblsearch.delegate = self
+        txtCompanyName.text = modelManager.getInstance().companyName
+        
+        
+        // Do any additional setup after loading the view.
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.presenter.getCustomerData()
+        
+    }
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
     @IBAction func txtLogOut(_ sender: AnyObject) {
         
@@ -27,128 +53,58 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
     }
     
     @IBAction func btnLog(_ sender: AnyObject) {
-        getStudentData()
+        presenter.getCustomerData()
+        refresh()
     }
     
     @IBAction func SearchEditingChanged(_ sender: AnyObject) {
-        marrStudentData = NSMutableArray()
         
         if (lblsearch.text! == ""){
             
-            print("yes")
-            marrStudentData = modelManager.getInstance().getSearchResultbyFirstName("%")
+          
+            presenter.getSearcResultByFirstName()
             refresh()
         }
         else{
-            print("no")
-            marrStudentData = modelManager.getInstance().getSearchResultbyFirstName(lblsearch.text!)
+          
+           presenter.getSearchResultByFirstName(firstName: lblsearch.text!)
             refresh()
         }
         
     }
     @IBAction func btnSearch(_ sender: AnyObject) {
-        marrStudentData = NSMutableArray()
+        marrCustomerData = NSMutableArray()
         
-        print(lblsearch.text!)
         
         if (lblsearch.text! == ""){
             
-            print("yes")
-            marrStudentData = modelManager.getInstance().getSearchResultbyFirstName("%")
+            
+            presenter.getSearcResultByFirstName()
             refresh()
         }
         else{
-            print("no")
-            marrStudentData = modelManager.getInstance().getSearchResultbyFirstName(lblsearch.text!)
-            refresh()        }
-        
+            
+            presenter.getSearchResultByFirstName(firstName: lblsearch.text!)
+            refresh()
+        }
     }
     
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.lblsearch.delegate = self
-        txtCompanyName.text = modelManager.getInstance().companyName
-        // Do any additional setup after loading the view.
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        self.getStudentData()
-        
-    }
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+  
     //MARK: Other methods
     
     
     
-    func getStudentData()
-    {
-        marrStudentData = NSMutableArray()
-        marrStudentData = modelManager.getInstance().getAllStudentData()
-        
-        refresh()
-    }
-    
-    //MARK: FIRST NAME SORTED
-    func getFirstNameSortedStudentData()
-    {
-        marrStudentData = NSMutableArray()
-        marrStudentData = modelManager.getInstance().getSortedByFirstName()
-        refresh()
-    }
-    
-    //MARK: LAST NAME SORTED
-    func getLastNameSortedStudentData()
-    {
-        marrStudentData = NSMutableArray()
-        marrStudentData = modelManager.getInstance().getSortedByLastName()
-        refresh()
-    }//MARK: EMAIL ADDRESS NAME SORTED
-    func getEmailAddressSortedStudentData()
-    {
-        marrStudentData = NSMutableArray()
-        marrStudentData = modelManager.getInstance().getSortedByEmailAddress()
-        refresh()
-    }//MARK: PHONE NUMBER NAME SORTED
-    func getPhoneNumberSortedStudentData()
-    {
-        marrStudentData = NSMutableArray()
-        marrStudentData = modelManager.getInstance().getSortedByPhoneNumber()
-        refresh()
-    }//MARK: REASON VISIT NAME SORTED
-    func getVisitReasonSortedStudentData()
-    {
-        marrStudentData = NSMutableArray()
-        marrStudentData = modelManager.getInstance().getSortedByVisitReason()
-        refresh()
-    }//MARK: VISITEDON NAME SORTED
-    func getVisitedOnSortedStudentData()
-    {
-        marrStudentData = NSMutableArray()
-        marrStudentData = modelManager.getInstance().getSortedByVisitedOn()
-        refresh()    }
-    
-    //MARK: UITableView delegate methods
+       //MARK: UITableView delegate methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return marrStudentData.count
+        return presenter.marrCustomerData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:StudentCell = tableView.dequeueReusableCell(withIdentifier: "cell") as! StudentCell
-        let customer:CustomerInfo = marrStudentData.object(at: (indexPath as NSIndexPath).row) as! CustomerInfo
+        let customer:CustomerInfo = presenter.marrCustomerData.object(at: (indexPath as NSIndexPath).row) as! CustomerInfo
         
         
         
@@ -176,39 +132,42 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
     @IBAction func sortByFirstName(_ sender: AnyObject) {
         
         
-        self.getFirstNameSortedStudentData()
+        self.presenter.getFirstNameSortedCustomerData()
+        refresh()
         
         
         
     }
     @IBAction func sortByLastName(_ sender: AnyObject) {
-        self.getLastNameSortedStudentData()
-        
+        self.presenter.getLastNameSortedCustomerData()
+        refresh()
         
     }
     
     @IBAction func sortByEmailAddress(_ sender: AnyObject) {
         
-        self.getEmailAddressSortedStudentData()
-        
+        self.presenter.getEmailAddressSortedCustomerData()
+        refresh()
         
     }
     
     @IBAction func sortByContactNumber(_ sender: AnyObject) {
         
         
-        self.getPhoneNumberSortedStudentData()
-        
+        self.presenter.getPhoneNumberSortedCustomerData()
+        refresh()
     }
     
     @IBAction func sortByVisitReason(_ sender: AnyObject) {
         
-        self.getVisitReasonSortedStudentData()
+        self.presenter.getVisitReasonSortedCustomerData()
+        refresh()
     }
     
     
     @IBAction func sortByVisitedOn(_ sender: AnyObject) {
-        self.getVisitedOnSortedStudentData()
+        self.presenter.getVisitedOnSortedCustomerData()
+        refresh()
     }
     
     
@@ -223,9 +182,8 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
             
             let btnDelete : UIButton = sender as! UIButton
             let selectedIndex : Int = btnDelete.tag
-            let customerInfo: CustomerInfo = self.marrStudentData.object(at: selectedIndex) as! CustomerInfo
-            let isDeleted = self.modelManager.getInstance().deleteStudentData(customerInfo)
-            
+            let customerInfo: CustomerInfo = self.presenter.marrCustomerData.object(at: selectedIndex) as! CustomerInfo
+            let isDeleted = self.presenter.deleteCustomerData(customerInfo: customerInfo)
             
             if isDeleted {
                 Util.invokeAlertMethod("", strBody: "Record deleted successfully.", delegate: nil)
@@ -233,7 +191,8 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
                 Util.invokeAlertMethod("", strBody: "Error in deleting record.", delegate: nil)
             }
             
-            self.getStudentData()
+            self.presenter.getCustomerData()
+            self.refresh()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
             UIAlertAction in
@@ -267,13 +226,13 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
             let selectedIndex : Int = btnEdit.tag
             let viewController : InsertRecordViewController = segue.destination as! InsertRecordViewController
             viewController.isEdit = true
-            viewController.customerData = marrStudentData.object(at: selectedIndex) as! CustomerInfo
+            viewController.customerData = marrCustomerData.object(at: selectedIndex) as! CustomerInfo
         }
     }
     
     
     private func refresh(){
-        tbStudentData.reloadData()
+        tbCustomerData.reloadData()
         
         
     }
