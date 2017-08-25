@@ -63,4 +63,12 @@ class InsertRecordPresenter{
     }
     
     
+    func getPickerItem() -> [String]{
+    
+        var newPicker: PickerInfo = PickerInfo()
+        
+        return newPicker.getPickerArray()
+    
+    }
+    
 }

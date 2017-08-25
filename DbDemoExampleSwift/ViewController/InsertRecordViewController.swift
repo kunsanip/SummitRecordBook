@@ -51,7 +51,7 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
         // Connect data:
         self.picker.delegate = self
         self.picker.dataSource = self
-        pickerData = ["Renew Visa", "Apply Uni", "Apply PR", "Apply PSW", "Sponsorship","Consult"]
+        pickerData = presenter.getPickerItem()
         
         
         if(isEdit)

@@ -28,6 +28,7 @@
 		D296D47B1F4D3A7800FE3F60 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D296D47A1F4D3A7800FE3F60 /* LogInViewController.swift */; };
 		D296D4901F4D67FA00FE3F60 /* InsertRecordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D296D48F1F4D67FA00FE3F60 /* InsertRecordPresenter.swift */; };
 		D296D4991F4D682200FE3F60 /* LogInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D296D4981F4D682200FE3F60 /* LogInPresenter.swift */; };
+		D2C2C7C41F501B3100111066 /* PickerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2C7C31F501B3100111066 /* PickerInfo.swift */; };
 		EAD5F4CB1B7A073200EBC695 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5F4CA1B7A073200EBC695 /* AppDelegate.swift */; };
 		EAD5F5021B7A080700EBC695 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5F4FF1B7A080700EBC695 /* ModelManager.swift */; };
 		EAD5F5031B7A080700EBC695 /* CustomerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5F5001B7A080700EBC695 /* CustomerInfo.swift */; };
@@ -135,6 +136,7 @@
 		D296D47A1F4D3A7800FE3F60 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		D296D48F1F4D67FA00FE3F60 /* InsertRecordPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertRecordPresenter.swift; sourceTree = "<group>"; };
 		D296D4981F4D682200FE3F60 /* LogInPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInPresenter.swift; sourceTree = "<group>"; };
+		D2C2C7C31F501B3100111066 /* PickerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerInfo.swift; sourceTree = "<group>"; };
 		EAD5F4C51B7A073200EBC695 /* Customer Record Summit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Customer Record Summit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAD5F4C91B7A073200EBC695 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAD5F4CA1B7A073200EBC695 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 				EAD5F5011B7A080700EBC695 /* Util.swift */,
 				D296D4621F4C6F3800FE3F60 /* Validation.swift */,
 				D296D46B1F4C706500FE3F60 /* Email.swift */,
+				D2C2C7C31F501B3100111066 /* PickerInfo.swift */,
 			);
 			name = "Model Layer";
 			path = Model;
@@ -578,6 +581,7 @@
 				EAD5F5041B7A080700EBC695 /* Util.swift in Sources */,
 				EAD5F52C1B7A126200EBC695 /* HomeScreenViewController.swift in Sources */,
 				EAD5F4CB1B7A073200EBC695 /* AppDelegate.swift in Sources */,
+				D2C2C7C41F501B3100111066 /* PickerInfo.swift in Sources */,
 				EAD5F5021B7A080700EBC695 /* ModelManager.swift in Sources */,
 				EAD5F5221B7A0ADE00EBC695 /* FMDatabase.m in Sources */,
 				D296D4711F4D32D700FE3F60 /* SignUpPresenter.swift in Sources */,
