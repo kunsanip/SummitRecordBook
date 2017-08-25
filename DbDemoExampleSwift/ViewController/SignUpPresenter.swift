@@ -12,7 +12,7 @@ import Foundation
 class SignUpPresenter{
     var modelManager: ModelManager = ModelManager()
     
-    var validation: Validation!
+    var validation: Validation! = Validation()
     
     
     func addCompanyData(companyInfo: CompanyInfo) -> Bool{
@@ -21,7 +21,9 @@ class SignUpPresenter{
     }
     
     func emailValidation(emailAddress: String) -> Bool{
-        let valid = validation.isValidEmail(emailAddress)
+        
+        let valid = validation.isValidEmail(email: emailAddress)
+    
         return valid
     }
     

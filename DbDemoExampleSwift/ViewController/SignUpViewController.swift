@@ -72,7 +72,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     //METHOD: BUTTON SIGNUP - WHEN USER SIGNS UP TO CREATE NEW ACCOUNT
     @IBAction func btnSignUp(_ sender: AnyObject) {
        
-        let emailVal:Bool = presenter.emailValidation(emailAddress: txtEmailAddress.text!)
         let companyInfo: CompanyInfo = CompanyInfo()
         
         companyInfo.Username = txtUsername.text!
@@ -81,9 +80,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         companyInfo.CompanyEmailAddress = txtEmailAddress.text!
         companyInfo.CompanyEmailPassword = txtEmailPassword.text!
         companyInfo.EmailHost = txtEmailHost.text!
-        companyInfo.PortNumber = Int(txtPortNumber.text!)!
+        print(txtPortNumber.text!)
+        print(Int(txtPortNumber.text!) ?? 510)
+        companyInfo.PortNumber = Int(txtPortNumber.text!) ?? 510
+    
         
-        
+        let emailVal:Bool = presenter.emailValidation(emailAddress: txtEmailAddress.text!)
+
         if(txtUsername.text == "")
         {
             Util.invokeAlertMethod("", strBody: "Please enter username.", delegate: nil)

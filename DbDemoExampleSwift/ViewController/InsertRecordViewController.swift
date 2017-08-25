@@ -143,14 +143,19 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
         
         let email:String = txtEmailAddress.text!
         let phone:String = txtPhoneNumber.text!
-        let emailVal:Bool = presenter.validation.isValidEmail(email)
+        let emailVal:Bool = presenter.validation.isValidEmail(email: email)
         let phoneVal:Bool = presenter.validation.validatePhone(phone)
+        
+        
+        //MARK: Date Stamp
         let now = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy'"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         let dateStamp = (formatter.string(from: now))
         
+        
+        //MARK: TEXT FIELD VALIDATION
         if(txtFirstName.text == "")
         {
             Util.invokeAlertMethod("", strBody: "Please enter first name.", delegate: nil)

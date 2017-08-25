@@ -30,7 +30,7 @@ class InsertRecordPresenter{
     
     
     func emailValidation(emailAddress: String) -> Bool{
-        let valid = validation.isValidEmail(emailAddress)
+        let valid = validation.isValidEmail(email: emailAddress)
         return valid
     }
     
