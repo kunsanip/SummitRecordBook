@@ -30,6 +30,7 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
     override func viewWillAppear(_ animated: Bool) {
         
         self.presenter.getCustomerData()
+        refresh()
         
     }
     override var prefersStatusBarHidden: Bool {
@@ -226,7 +227,7 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource,UITable
             let selectedIndex : Int = btnEdit.tag
             let viewController : InsertRecordViewController = segue.destination as! InsertRecordViewController
             viewController.isEdit = true
-            viewController.customerData = marrCustomerData.object(at: selectedIndex) as! CustomerInfo
+            viewController.customerData = self.presenter.marrCustomerData.object(at: selectedIndex) as! CustomerInfo
         }
     }
     

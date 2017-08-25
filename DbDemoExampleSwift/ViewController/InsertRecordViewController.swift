@@ -136,6 +136,8 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.navigationController?.popViewController(animated: true)
     }
     
+    
+    //MARK: BUTTON SAVE CLICKED 
     @IBAction func btnSaveClicked(_ sender: AnyObject)
     {
         
@@ -223,7 +225,7 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
                 customerInfo.TimeStamp = dateStamp
                 
                 
-                let isInserted = presenter.updateRecord(customerInfo: customerInfo)
+                let isInserted = presenter.insertRecord(customerInfo: customerInfo)
                 
                 if isInserted {
                     Util.invokeAlertMethod("", strBody: "Record Inserted successfully.", delegate: nil)

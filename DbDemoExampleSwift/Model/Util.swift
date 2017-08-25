@@ -16,6 +16,8 @@ class Util: NSObject {
         let dbPath: String = getPath(fileName as String)
        
         let fileManager = FileManager.default
+        
+        
         if !fileManager.fileExists(atPath: dbPath) {
             
             let documentsURL = Bundle.main.resourceURL

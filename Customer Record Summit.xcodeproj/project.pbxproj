@@ -267,6 +267,14 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		D2C2C7BB1F500EBF00111066 /* MailCore */ = {
+			isa = PBXGroup;
+			children = (
+				D23ABD0F1E51AAE2003625EC /* mailcore2.xcodeproj */,
+			);
+			name = MailCore;
+			sourceTree = "<group>";
+		};
 		EAD5F4BC1B7A073200EBC695 = {
 			isa = PBXGroup;
 			children = (
@@ -291,7 +299,6 @@
 		EAD5F4C71B7A073200EBC695 /* CustomerRecordSummit */ = {
 			isa = PBXGroup;
 			children = (
-				D23ABD0F1E51AAE2003625EC /* mailcore2.xcodeproj */,
 				EAD5F4CA1B7A073200EBC695 /* AppDelegate.swift */,
 				EAD5F4CE1B7A073200EBC695 /* Main.storyboard */,
 				8404B9471D9BD0DA00FA13C4 /* customerDB.sqlite */,
@@ -303,6 +310,7 @@
 				EAD5F4FE1B7A07E900EBC695 /* Model Layer */,
 				D296D4771F4D3A1E00FE3F60 /* Presenter */,
 				EAD5F4F91B7A078D00EBC695 /* ViewController */,
+				D2C2C7BB1F500EBF00111066 /* MailCore */,
 				D296D45E1F4C207100FE3F60 /* Objective C-Swift Headers */,
 				EAD5F4C81B7A073200EBC695 /* Supporting Files */,
 			);

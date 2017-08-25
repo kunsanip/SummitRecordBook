@@ -12,24 +12,39 @@ import UIKit
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
+    
+    //MARK: TEXTFIELDS
+    
+    //TEXTFIELD: USERNAME
     @IBOutlet weak var txtUsername: UITextField!
-       
+    
+    //TEXTFIELD: USERNAME
     @IBOutlet weak var txtEmailAddress: UITextField!
     
+    //TEXTFIELD: USERNAME
     @IBOutlet weak var txtPassword: UITextField!
  
+    //TEXTFIELD: USERNAME
     @IBOutlet weak var txtReEnteredPassword: UITextField!
  
+    //TEXTFIELD: USERNAME
     @IBOutlet weak var txtCompanyName: UITextField!
 
+    //TEXTFIELD: USERNAME
     @IBOutlet weak var txtEmailPassword: UITextField!
 
+    //TEXTFIELD: USERNAME
     @IBOutlet weak var txtEmailHost: UITextField!
     
+    //TEXTFIELD: USERNAME
     @IBOutlet weak var txtPortNumber: UITextField!
-  
+    
+    
+    //OBJECT: SIGNUPPRESENTER
     fileprivate var presenter: SignUpPresenter!
     
+    
+    //INITIALIZER: VIEWDIDLOAD METHOD
     override func viewDidLoad() {
         super.viewDidLoad()
         self.txtUsername.delegate = self;
@@ -42,6 +57,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         presenter = SignUpPresenter()
         // Do any additional setup after loading the view.
     }
+    
+    //METHOD: STATUS BAR HIDDEN
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -52,6 +69,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
 
     
+    //METHOD: BUTTON SIGNUP - WHEN USER SIGNS UP TO CREATE NEW ACCOUNT
     @IBAction func btnSignUp(_ sender: AnyObject) {
        
         let emailVal:Bool = presenter.emailValidation(emailAddress: txtEmailAddress.text!)
@@ -127,7 +145,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     }
  
-   
+ 
+    //SEGUE: I HAVE AN ACCOUNT - FORWARDS TO THE HOME SCREEN
     @IBAction func btnIHaveAccount(_ sender: Any) {
         
         self.performSegue(withIdentifier: "SignIn", sender: sender)
@@ -136,9 +155,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
    
     
+    
+    //VIEW: TEXTFIELDSHOULDRETURN
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
 
+    
   }

@@ -11,6 +11,7 @@ import Foundation
 
 class SignUpPresenter{
     var modelManager: ModelManager = ModelManager()
+    
     var validation: Validation!
     
     

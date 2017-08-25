@@ -39,6 +39,11 @@ class InsertRecordPresenter{
         return valid
     }
     
+    func insertRecord(customerInfo: CustomerInfo) -> Bool{
+        let insertStatus:Bool = modelManager.getInstance().addStudentData(customerInfo)
+        return insertStatus
+    
+    }
     func updateRecord(customerInfo: CustomerInfo) -> Bool{
         let updateStatus:Bool = modelManager.getInstance().updateStudentData(customerInfo)
         
