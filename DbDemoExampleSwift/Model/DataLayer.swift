@@ -67,7 +67,7 @@ class DataLayer: NSObject {
         //        print(companyInfo.CompanyEmailAddress)
         //        print(companyInfo.CompanyEmailPassword)
         //        print(companyInfo.EmailHost)
-        let isInserted = sharedInstance.database!.executeUpdate("INSERT INTO companyDetails (username, password, companyName, companyEmailAddress, companyEmailPassword, emailHost, portNumber) VALUES (?, ?,?,?,?,?,?)", withArgumentsIn: [companyInfo.Username, companyInfo.Password, companyInfo.CompanyName, companyInfo.CompanyEmailAddress, companyInfo.CompanyEmailPassword, companyInfo.EmailHost, companyInfo.PortNumber])
+        let isInserted = sharedInstance.database!.executeUpdate("INSERT INTO companyDetails (username, password, companyName, companyEmailAddress, companyEmailPassword, emailHost, portNumber) VALUES (?,?,?,?,?,?,?)", withArgumentsIn: [companyInfo.Username, companyInfo.Password, companyInfo.CompanyName, companyInfo.CompanyEmailAddress, companyInfo.CompanyEmailPassword, companyInfo.EmailHost, companyInfo.PortNumber])
         print (isInserted)
         sharedInstance.database!.executeUpdate("CREATE TABLE '\(companyInfo.Username)' ( `visitNumber` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, `firstName` TEXT, `lastName` TEXT, `emailAddress` TEXT, `phoneNumber` TEXT, `visitReason` TEXT, `timeStamp` TEXT )", withArgumentsIn: nil)
         

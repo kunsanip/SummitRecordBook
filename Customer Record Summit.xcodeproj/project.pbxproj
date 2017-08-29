@@ -29,6 +29,7 @@
 		D296D4901F4D67FA00FE3F60 /* InsertRecordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D296D48F1F4D67FA00FE3F60 /* InsertRecordPresenter.swift */; };
 		D296D4991F4D682200FE3F60 /* LogInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D296D4981F4D682200FE3F60 /* LogInPresenter.swift */; };
 		D2C2C7C41F501B3100111066 /* PickerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2C7C31F501B3100111066 /* PickerInfo.swift */; };
+		D2C6FA5D1F517862009377F8 /* Synchronize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C6FA5C1F517862009377F8 /* Synchronize.swift */; };
 		EAD5F4CB1B7A073200EBC695 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5F4CA1B7A073200EBC695 /* AppDelegate.swift */; };
 		EAD5F5021B7A080700EBC695 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5F4FF1B7A080700EBC695 /* ModelManager.swift */; };
 		EAD5F5031B7A080700EBC695 /* CustomerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5F5001B7A080700EBC695 /* CustomerInfo.swift */; };
@@ -137,6 +138,8 @@
 		D296D48F1F4D67FA00FE3F60 /* InsertRecordPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertRecordPresenter.swift; sourceTree = "<group>"; };
 		D296D4981F4D682200FE3F60 /* LogInPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInPresenter.swift; sourceTree = "<group>"; };
 		D2C2C7C31F501B3100111066 /* PickerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerInfo.swift; sourceTree = "<group>"; };
+		D2C2C7C51F5129BA00111066 /* Customer Record Summit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Customer Record Summit.entitlements"; path = "Customer Record Summit/Customer Record Summit.entitlements"; sourceTree = "<group>"; };
+		D2C6FA5C1F517862009377F8 /* Synchronize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Synchronize.swift; sourceTree = "<group>"; };
 		EAD5F4C51B7A073200EBC695 /* Customer Record Summit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Customer Record Summit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAD5F4C91B7A073200EBC695 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAD5F4CA1B7A073200EBC695 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -280,6 +283,7 @@
 		EAD5F4BC1B7A073200EBC695 = {
 			isa = PBXGroup;
 			children = (
+				D2C2C7C51F5129BA00111066 /* Customer Record Summit.entitlements */,
 				84B256971D9382E200293392 /* libsqlite3.tbd */,
 				4C971E111BBE4BA6008411F6 /* libsqlite3.0.tbd */,
 				EAD5F4C71B7A073200EBC695 /* CustomerRecordSummit */,
@@ -376,6 +380,7 @@
 				D296D4621F4C6F3800FE3F60 /* Validation.swift */,
 				D296D46B1F4C706500FE3F60 /* Email.swift */,
 				D2C2C7C31F501B3100111066 /* PickerInfo.swift */,
+				D2C6FA5C1F517862009377F8 /* Synchronize.swift */,
 			);
 			name = "Model Layer";
 			path = Model;
@@ -457,6 +462,14 @@
 						CreatedOnToolsVersion = 6.3.2;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.NetworkExtensions = {
+								enabled = 0;
+							};
+							com.apple.SafariKeychain = {
+								enabled = 0;
+							};
+						};
 					};
 					EAD5F4D91B7A073200EBC695 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -585,6 +598,7 @@
 				EAD5F5021B7A080700EBC695 /* ModelManager.swift in Sources */,
 				EAD5F5221B7A0ADE00EBC695 /* FMDatabase.m in Sources */,
 				D296D4711F4D32D700FE3F60 /* SignUpPresenter.swift in Sources */,
+				D2C6FA5D1F517862009377F8 /* Synchronize.swift in Sources */,
 				D296D46F1F4C7C5400FE3F60 /* DataLayer.swift in Sources */,
 				D296D4631F4C6F3800FE3F60 /* Validation.swift in Sources */,
 				D296D47B1F4D3A7800FE3F60 /* LogInViewController.swift in Sources */,
@@ -745,6 +759,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = AGCQL8H37L;
 				INFOPLIST_FILE = DbDemoExampleSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MailCore = "";
 				OTHER_LDFLAGS = (
@@ -779,6 +794,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = AGCQL8H37L;
 				INFOPLIST_FILE = DbDemoExampleSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MailCore = "";
 				OTHER_LDFLAGS = (
