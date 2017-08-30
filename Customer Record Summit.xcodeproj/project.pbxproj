@@ -16,6 +16,7 @@
 		D23ABD2C1E51AC7B003625EC /* libMailCore-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D23ABD1D1E51AAE3003625EC /* libMailCore-ios.a */; };
 		D23ABD2F1E51ACC0003625EC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23ABD2E1E51ACC0003625EC /* CFNetwork.framework */; };
 		D23ABD311E51BA67003625EC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23ABD301E51BA67003625EC /* Security.framework */; };
+		D2659A271F56BBAF00EC832F /* myFile.txt in Resources */ = {isa = PBXBuildFile; fileRef = D2659A261F56BBAF00EC832F /* myFile.txt */; };
 		D26F018B1E665D43001EFC1E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D26F018A1E665D43001EFC1E /* Images.xcassets */; };
 		D26F018E1E66CAAA001EFC1E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B256971D9382E200293392 /* libsqlite3.tbd */; };
 		D26F018F1E66CB7F001EFC1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAD5F4CE1B7A073200EBC695 /* Main.storyboard */; };
@@ -128,6 +129,7 @@
 		D23ABD2E1E51ACC0003625EC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D23ABD301E51BA67003625EC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D23ABD321E51BD25003625EC /* Project-Name-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Project-Name-Bridging-Header.h"; sourceTree = "<group>"; };
+		D2659A261F56BBAF00EC832F /* myFile.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = myFile.txt; sourceTree = "<group>"; };
 		D26F018A1E665D43001EFC1E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "../Customer Record Summit/Images.xcassets"; sourceTree = "<group>"; };
 		D296D45F1F4C3AE300FE3F60 /* CustomerRecordPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomerRecordPresenter.swift; path = ../CustomerRecordPresenter.swift; sourceTree = "<group>"; };
 		D296D4621F4C6F3800FE3F60 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 				D2C2C7BB1F500EBF00111066 /* MailCore */,
 				D296D45E1F4C207100FE3F60 /* Objective C-Swift Headers */,
 				EAD5F4C81B7A073200EBC695 /* Supporting Files */,
+				D2659A261F56BBAF00EC832F /* myFile.txt */,
 			);
 			name = CustomerRecordSummit;
 			path = DbDemoExampleSwift;
@@ -569,6 +572,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D26F018B1E665D43001EFC1E /* Images.xcassets in Resources */,
+				D2659A271F56BBAF00EC832F /* myFile.txt in Resources */,
 				8404B9481D9BE1D900FA13C4 /* customerDB.sqlite in Resources */,
 				84BECC6D1D9AA06D007D94F4 /* Launch Screen.storyboard in Resources */,
 				D26F018F1E66CB7F001EFC1E /* Main.storyboard in Resources */,
