@@ -12,6 +12,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("UTIL I'm first")
         
         Util.copyFile("customerDB.sqlite")
+        
+       
+        
         return true
     }
 

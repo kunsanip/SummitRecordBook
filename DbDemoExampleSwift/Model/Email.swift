@@ -9,7 +9,7 @@
 import Foundation
 
 
-class SMTP{
+class Email{
 
 
     
@@ -17,7 +17,7 @@ class SMTP{
 
 }
 
-extension SMTP{
+extension Email{
     
     // This one is used at the moment: 2nd app submission
     public func MailCore( name: String, emailAddress:String){
