@@ -73,8 +73,8 @@ class FTPClient{
     
     
     //MARK: FTP Download
-    func testDownload() {
-        self.session.download("/1MB.zip") {
+    func testDownload(urlRemaining: String) {
+        self.session.download(urlRemaining) {
             (fileURL, error) -> Void in
             print("Download file with result:\n\(fileURL), error: \(error)\n\n")
             if let fileURL = fileURL {
