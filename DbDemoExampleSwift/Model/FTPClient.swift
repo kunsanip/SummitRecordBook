@@ -30,7 +30,7 @@ class FTPClient{
         self.session = Session(configuration: configuration)
         
         testList()
-        //testDownload()
+        testDownload()
         //testCreate()
     }
     
@@ -73,8 +73,8 @@ class FTPClient{
     
     
     //MARK: FTP Download
-    func testDownload(urlRemaining: String) {
-        self.session.download(urlRemaining) {
+    func testDownload() {
+        self.session.download("/wp-content/uploads/2017/06/SANIP-SHRESTHA-WHITE-2.png") {
             (fileURL, error) -> Void in
             print("Download file with result:\n\(fileURL), error: \(error)\n\n")
             if let fileURL = fileURL {

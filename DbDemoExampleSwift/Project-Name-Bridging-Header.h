@@ -4,5 +4,5 @@
 
 #import <MailCore/MailCore.h>
 #import <MailCore/MCOConstants.h>
-
+#import <FXBlurView.h>
 #endif /* YourProject_Bridging_Header_h */

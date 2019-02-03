@@ -249,24 +249,7 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
     
-    
-    
-    
- 
-        
-            func sendJson(){
-//        
-//                if let URL = NSBundle.mainBundle().URLForResource("myFile", withExtension: "txt") {
-//                    let path = "myFile.txt"
-//                    session.upload(URL, path: path) {
-//                        (result, error) -> Void in
-//                        print("result:\n\(result), error: \(error)\n\n")
-//                    }
-//                }
-        
-            }
-    
-    
+   
         
         
     

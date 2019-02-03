@@ -7,7 +7,7 @@
 //
 import UIKit
 import CoreData
-import RebekkaTouch
+//import RebekkaTouch
 
 //Global shared Instance
 let sharedInstance = DataLayer()
