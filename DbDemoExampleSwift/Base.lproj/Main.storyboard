@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="i5X-8z-0sv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="i5X-8z-0sv">
     <device id="ipad12_9" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -600,7 +601,7 @@ Contact us on +61405444244</string>
                                 </state>
                                 <connections>
                                     <action selector="AboutSummit:" destination="qSF-RP-vEX" eventType="touchUpInside" id="DzK-TT-Scs"/>
-                                    <segue destination="zGI-JT-8si" kind="showDetail" identifier="aboutsegue" animates="NO" action="showViewController:sender:" id="L8Q-NS-rxr"/>
+                                    <segue destination="zGI-JT-8si" kind="showDetail" identifier="aboutsegue" animates="NO" id="L8Q-NS-rxr"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DaU-3h-vrx">
@@ -799,7 +800,7 @@ Contact us on +61405444244</string>
         <image name="logoSummit 200x200.jpeg" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aOm-a2-OHa"/>
+        <segue reference="5Jl-FX-Udx"/>
         <segue reference="gb3-N3-yLW"/>
     </inferredMetricsTieBreakers>
 </document>
