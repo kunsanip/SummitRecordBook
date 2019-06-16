@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Customers View Controller-->
         <scene sceneID="JD8-zG-suJ">
             <objects>
-                <viewController id="BDm-x2-jtO" sceneMemberID="viewController">
+                <viewController id="BDm-x2-jtO" customClass="CustomersViewController" customModule="Customer_Record_Summit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FEo-Jf-hXQ"/>
                         <viewControllerLayoutGuide type="bottom" id="qZT-Vg-HwW"/>
@@ -24,15 +24,31 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="120" id="eU9-sB-E0V">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="120" id="eU9-sB-E0V" customClass="StudentInfoTableViewCell" customModule="Customer_Record_Summit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="1366" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eU9-sB-E0V" id="5tj-rZ-lol">
                                             <rect key="frame" x="0.0" y="0.0" width="1366" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcR-6g-N52">
+                                                    <rect key="frame" x="64" y="8" width="163" height="103"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="studentName" destination="bcR-6g-N52" id="E6o-hZ-kuo"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BDm-x2-jtO" id="xrD-fG-x3k"/>
+                                    <outlet property="delegate" destination="BDm-x2-jtO" id="KTA-2o-JSO"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -46,7 +62,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dWM-dI-h3X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2548.9019033674963" y="-313.4765625"/>
+            <point key="canvasLocation" x="1391.9472913616398" y="-969.14062499999989"/>
         </scene>
         <!--Home Screen View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -675,6 +691,15 @@ Contact us on +61405444244</string>
                                     <outlet property="delegate" destination="qSF-RP-vEX" id="eGe-3l-o0E"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ur-vw-1dE">
+                                <rect key="frame" x="610" y="113" width="147" height="59"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="BDm-x2-jtO" kind="show" id="Xbp-xa-phu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.23743388056755066" green="0.66820746660232544" blue="0.83934342861175537" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -689,7 +714,7 @@ Contact us on +61405444244</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfR-20-1AP" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1103.90625" y="-241.1420204978038"/>
+            <point key="canvasLocation" x="1103.8067349926794" y="-241.40624999999997"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="9wF-5q-TFp">

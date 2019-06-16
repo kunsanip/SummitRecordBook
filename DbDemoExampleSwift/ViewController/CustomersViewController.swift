@@ -8,31 +8,30 @@
 
 import UIKit
 
-class CustomersViewController: UIViewController {
-
+class CustomersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var presenter:CustomersPresenter = CustomersPresenter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-   
-}
-
-extension CustomersViewController: UITableViewDelegate, UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return presenter.marrCustomerData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell:StudentInfoTableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! StudentInfoTableViewCell
+        let customer:CustomerInfo = presenter.marrCustomerData.object(at: (indexPath as NSIndexPath).row) as! CustomerInfo
+        
+        cell.studentName.text = customer.FirstName
+        
+        return cell
     }
-    
-    
-    
-    
 }
+

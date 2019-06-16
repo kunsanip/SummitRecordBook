@@ -2,7 +2,7 @@
 //  Validation.swift
 //  Customer Record Summit
 //
-//  Created by Admin on 8/22/17.
+//  Created by Sanip Shrestha on 8/22/17.
 //  Copyright © 2017 Summit. All rights reserved.
 //
 

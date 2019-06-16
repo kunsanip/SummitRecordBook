@@ -34,8 +34,9 @@
 		D296D4991F4D682200FE3F60 /* LogInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D296D4981F4D682200FE3F60 /* LogInPresenter.swift */; };
 		D2B11D3D2217D98C00ED882F /* RebekkaTouch.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D2B11D362217D82600ED882F /* RebekkaTouch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D2C2C7C41F501B3100111066 /* PickerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2C7C31F501B3100111066 /* PickerInfo.swift */; };
-		D2C6FA5D1F517862009377F8 /* Synchronize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C6FA5C1F517862009377F8 /* Synchronize.swift */; };
 		D2F3D3A722B61FE50078EC82 /* CustomersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F3D3A622B61FE50078EC82 /* CustomersViewController.swift */; };
+		D2F3D3B222B626F70078EC82 /* CustomersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F3D3B122B626F70078EC82 /* CustomersPresenter.swift */; };
+		D2F3D3B622B62DE90078EC82 /* StudentInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F3D3B522B62DE90078EC82 /* StudentInfoTableViewCell.swift */; };
 		EAD5F4CB1B7A073200EBC695 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5F4CA1B7A073200EBC695 /* AppDelegate.swift */; };
 		EAD5F5021B7A080700EBC695 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5F4FF1B7A080700EBC695 /* ModelManager.swift */; };
 		EAD5F5031B7A080700EBC695 /* CustomerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5F5001B7A080700EBC695 /* CustomerInfo.swift */; };
@@ -181,8 +182,9 @@
 		D296D4981F4D682200FE3F60 /* LogInPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInPresenter.swift; sourceTree = "<group>"; };
 		D2C2C7C31F501B3100111066 /* PickerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerInfo.swift; sourceTree = "<group>"; };
 		D2C2C7C51F5129BA00111066 /* Customer Record Summit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Customer Record Summit.entitlements"; path = "Customer Record Summit/Customer Record Summit.entitlements"; sourceTree = "<group>"; };
-		D2C6FA5C1F517862009377F8 /* Synchronize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Synchronize.swift; sourceTree = "<group>"; };
 		D2F3D3A622B61FE50078EC82 /* CustomersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersViewController.swift; sourceTree = "<group>"; };
+		D2F3D3B122B626F70078EC82 /* CustomersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersPresenter.swift; sourceTree = "<group>"; };
+		D2F3D3B522B62DE90078EC82 /* StudentInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfoTableViewCell.swift; sourceTree = "<group>"; };
 		EAD5F4C51B7A073200EBC695 /* Customer Record Summit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Customer Record Summit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAD5F4C91B7A073200EBC695 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAD5F4CA1B7A073200EBC695 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -272,23 +274,13 @@
 			name = Network;
 			sourceTree = "<group>";
 		};
-		D291E2DF1F5E46C2009AD790 /* Interface */ = {
+		D291E2E01F5E47B0009AD790 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				EAD5F5001B7A080700EBC695 /* CustomerInfo.swift */,
-				84BECC701D9B81BF007D94F4 /* CompanyInfo.swift */,
-				84BECC681D9A4A9E007D94F4 /* Credential.swift */,
-				D2C2C7C31F501B3100111066 /* PickerInfo.swift */,
-			);
-			name = Interface;
-			sourceTree = "<group>";
-		};
-		D291E2E01F5E47B0009AD790 /* FileManager */ = {
-			isa = PBXGroup;
-			children = (
+				D296D4621F4C6F3800FE3F60 /* Validation.swift */,
 				EAD5F5011B7A080700EBC695 /* Util.swift */,
 			);
-			name = FileManager;
+			name = Util;
 			sourceTree = "<group>";
 		};
 		D296D45E1F4C207100FE3F60 /* Objective C-Swift Headers */ = {
@@ -365,8 +357,19 @@
 			isa = PBXGroup;
 			children = (
 				D2F3D3A622B61FE50078EC82 /* CustomersViewController.swift */,
+				D2F3D3B122B626F70078EC82 /* CustomersPresenter.swift */,
 			);
 			name = CustomersScreen;
+			sourceTree = "<group>";
+		};
+		D2F3D3B422B62B7F0078EC82 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EAD5F5001B7A080700EBC695 /* CustomerInfo.swift */,
+				84BECC701D9B81BF007D94F4 /* CompanyInfo.swift */,
+				84BECC681D9A4A9E007D94F4 /* Credential.swift */,
+			);
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 		EAD5F4BC1B7A073200EBC695 = {
@@ -465,13 +468,12 @@
 		EAD5F4FE1B7A07E900EBC695 /* Model Layer */ = {
 			isa = PBXGroup;
 			children = (
+				D2F3D3B422B62B7F0078EC82 /* ViewModel */,
 				EAD5F4FF1B7A080700EBC695 /* ModelManager.swift */,
+				D2C2C7C31F501B3100111066 /* PickerInfo.swift */,
 				D291E2DE1F5E45A8009AD790 /* Network */,
 				D296D46D1F4C7C3800FE3F60 /* Database */,
-				D291E2DF1F5E46C2009AD790 /* Interface */,
-				D291E2E01F5E47B0009AD790 /* FileManager */,
-				D296D4621F4C6F3800FE3F60 /* Validation.swift */,
-				D2C6FA5C1F517862009377F8 /* Synchronize.swift */,
+				D291E2E01F5E47B0009AD790 /* Util */,
 			);
 			name = "Model Layer";
 			path = Model;
@@ -495,6 +497,7 @@
 			isa = PBXGroup;
 			children = (
 				EAD5F5301B7A18D800EBC695 /* StudentCell.swift */,
+				D2F3D3B522B62DE90078EC82 /* StudentInfoTableViewCell.swift */,
 			);
 			path = UITableViewCell;
 			sourceTree = "<group>";
@@ -705,7 +708,6 @@
 				EAD5F5021B7A080700EBC695 /* ModelManager.swift in Sources */,
 				EAD5F5221B7A0ADE00EBC695 /* FMDatabase.m in Sources */,
 				D296D4711F4D32D700FE3F60 /* SignUpPresenter.swift in Sources */,
-				D2C6FA5D1F517862009377F8 /* Synchronize.swift in Sources */,
 				D296D46F1F4C7C5400FE3F60 /* DataLayer.swift in Sources */,
 				D296D4631F4C6F3800FE3F60 /* Validation.swift in Sources */,
 				D296D47B1F4D3A7800FE3F60 /* LogInViewController.swift in Sources */,
@@ -716,6 +718,7 @@
 				84BECC691D9A4A9E007D94F4 /* Credential.swift in Sources */,
 				D2189CFE1F5DBC5100FE0B19 /* JsonConverter.swift in Sources */,
 				D296D4901F4D67FA00FE3F60 /* InsertRecordPresenter.swift in Sources */,
+				D2F3D3B222B626F70078EC82 /* CustomersPresenter.swift in Sources */,
 				D291E2DD1F5E45A2009AD790 /* FTPClient.swift in Sources */,
 				D296D46C1F4C706500FE3F60 /* Email.swift in Sources */,
 				84BECC711D9B81BF007D94F4 /* CompanyInfo.swift in Sources */,
@@ -723,6 +726,7 @@
 				84BECC6F1D9B7F50007D94F4 /* SignUpViewController.swift in Sources */,
 				EAD5F5231B7A0ADE00EBC695 /* FMDatabaseAdditions.m in Sources */,
 				D296D4601F4C3AE300FE3F60 /* CustomerRecordPresenter.swift in Sources */,
+				D2F3D3B622B62DE90078EC82 /* StudentInfoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,7 +2,7 @@
 //  Email.swift
 //  Customer Record Summit
 //
-//  Created by Admin on 8/23/17.
+//  Created by Sanip Shrestha on 8/23/17.
 //  Copyright © 2017 Summit. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  Credential.swift
 //  DbDemoExampleSwift
 //
-//  Created by Admin on 27/09/2016.
+//  Created by Sanip Shrestha on 27/09/2016.
 //  Copyright © 2016 Summit. All rights reserved.
 //
 

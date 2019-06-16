@@ -2,7 +2,7 @@
 //  LogInViewController.swift
 //  DbDemoExampleSwift
 //
-//  Created by Admin on 27/09/2016.
+//  Created by Sanip Shrestha on 27/09/2016.
 //  Copyright © 2016 Summit. All rights reserved.
 //
 
@@ -41,13 +41,13 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
     }
 
-    
     @IBAction func AboutSummit(_ sender: Any) {
         self.performSegue(withIdentifier: "aboutsegue", sender: sender)
 
     }
+    
     @IBAction func btnLogIn(_ sender: AnyObject) {
-        
+
         if(txtUsername.text == "")
         {
             Util.invokeAlertMethod("", strBody: "Please enter username.", delegate: nil)
@@ -56,32 +56,29 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         {
             Util.invokeAlertMethod("", strBody: "Please enter password.", delegate: nil)
         }
-        else{}
       
         let loginstatus:NSMutableArray! = presenter.getProfile(username: txtUsername.text!, password: txtPassword.text!)
         
         //checking if there is entity in loginstatus
-        if (loginstatus.count == 1){
-            self.performSegue(withIdentifier: "loginsegue", sender: sender)}
-        else{
-            Util.invokeAlertMethod("Incorrect Username/Password", strBody: "Please try again", delegate: nil)
-
-
+        if (loginstatus.count == 1)
+        {
+            self.performSegue(withIdentifier: "loginsegue", sender: sender)
         }
-    
-    
-        
-
+        else
+        {
+            Util.invokeAlertMethod("Incorrect Username/Password", strBody: "Please try again", delegate: nil)
+        }
     }
-  
     
-       //MARK: UIButton Action methods
+    //MARK: UIButton Action methods
     
     @IBAction func btnBackClicked(_ sender: AnyObject)
     {
         self.navigationController?.popViewController(animated: true)
     }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
         self.view.endEditing(true)
         return false
     }
