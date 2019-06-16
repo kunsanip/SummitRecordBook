@@ -13,9 +13,6 @@ import CoreData
 let sharedInstance = DataLayer()
 class DataLayer: NSObject {
     
-
-    
-    
     var database: FMDatabase? = nil
     var username: String = String()
     var companyName: String = String()
@@ -24,16 +21,9 @@ class DataLayer: NSObject {
     var emailHost: String = String()
     var portNumber: Int = 0
     
-   
-   
-    
-    
     func setUserName(_ txtusername:String){
         self.username = txtusername
-        
-        
     }
-    
     
     func setCompanyDetail(_ credential: Credential){
         self.companyName = credential.CompanyName
@@ -41,7 +31,6 @@ class DataLayer: NSObject {
         self.companyEmailPassword = credential.CompanyEmailPassword
         self.emailHost = credential.emailHost
         self.portNumber = credential.portNumber
-        
     }
     
     func addStudentData(_ customerInfo: CustomerInfo) -> Bool {
@@ -55,8 +44,6 @@ class DataLayer: NSObject {
         print(customerInfo.ReasonVisit)
         print(customerInfo.TimeStamp)
         
-        
-        
         let isInserted = sharedInstance.database!.executeUpdate("INSERT INTO \(self.username) (firstName, lastName, emailAddress, phoneNumber, visitReason, timeStamp) VALUES (?, ?,?,?,?,?)", withArgumentsIn: [customerInfo.FirstName, customerInfo.LastName, customerInfo.EmailAddress, customerInfo.PhoneNumber,customerInfo.ReasonVisit, customerInfo.TimeStamp])
         
         
@@ -68,12 +55,6 @@ class DataLayer: NSObject {
     func addCompanyData(_ companyInfo: CompanyInfo) -> Bool {
         sharedInstance.database!.open()
         
-        //        print(companyInfo.Username)
-        //        print(companyInfo.Password)
-        //        print(companyInfo.CompanyName)
-        //        print(companyInfo.CompanyEmailAddress)
-        //        print(companyInfo.CompanyEmailPassword)
-        //        print(companyInfo.EmailHost)
         let isInserted = sharedInstance.database!.executeUpdate("INSERT INTO companyDetails (username, password, companyName, companyEmailAddress, companyEmailPassword, emailHost, portNumber) VALUES (?,?,?,?,?,?,?)", withArgumentsIn: [companyInfo.Username, companyInfo.Password, companyInfo.CompanyName, companyInfo.CompanyEmailAddress, companyInfo.CompanyEmailPassword, companyInfo.EmailHost, companyInfo.PortNumber])
         print (isInserted)
         sharedInstance.database!.executeUpdate("CREATE TABLE '\(companyInfo.Username)' ( `visitNumber` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, `firstName` TEXT, `lastName` TEXT, `emailAddress` TEXT, `phoneNumber` TEXT, `visitReason` TEXT, `timeStamp` TEXT )", withArgumentsIn: nil)
@@ -81,32 +62,19 @@ class DataLayer: NSObject {
         sharedInstance.database!.close()
         return isInserted
         
-        
-        
     }
     
     func checkUsername(_ companyInfo: CompanyInfo) -> Bool {
         sharedInstance.database!.open()
         var checkstatus: Bool = true
-        
-        //        print(companyInfo.Username)
-        //        print(companyInfo.Password)
-        //        print(companyInfo.CompanyName)
-        //        print(companyInfo.CompanyEmailAddress)
-        
-        
-        //Query the company details if username is found there will be result set hence check status will be false
-        
         let resultSet: FMResultSet! = sharedInstance.database!.executeQuery("SELECT * FROM companyDetails WHERE username LIKE '\(companyInfo.Username)'", withArgumentsIn: nil)
         
         
         if (resultSet != nil) {
-            while resultSet.next() {
-                
-                
+            while resultSet.next()
+            {
                 checkstatus = false
             }
-            
         }
         return checkstatus
     }
@@ -171,26 +139,17 @@ class DataLayer: NSObject {
                 //Adding Customer Information in marrcustomerInfo NSMutable Array
                 marrcustomerInfo.add(customerInfo)
             
-                
                 jsonArray.append(customerInfo)
-                
                 
             }
             //Send json array from datalayer to jsonconverter
             JsonConverter.jsonConverter(customerInfoArray: jsonArray)
             JsonConverter.jsonSender()
             
-          
         }
         sharedInstance.database!.close()
         return marrcustomerInfo
     }
-    
-    
-    
-   
-    
-    
     
     func getSortedByFirstName() -> NSMutableArray {
         sharedInstance.database!.open()
@@ -207,7 +166,6 @@ class DataLayer: NSObject {
                 customerInfo.PhoneNumber = resultSet.string(forColumn: "phoneNumber")
                 customerInfo.ReasonVisit = resultSet.string(forColumn: "visitReason")
                 customerInfo.TimeStamp = resultSet.string(forColumn: "timeStamp")
-                
                 
                 marrcustomerInfo.add(customerInfo)
             }

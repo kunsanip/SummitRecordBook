@@ -11,10 +11,6 @@ import Foundation
 
 class Email{
 
-
-    
-
-
 }
 
 extension Email{
@@ -24,8 +20,8 @@ extension Email{
         
         let smtpSession = MCOSMTPSession()
         smtpSession.hostname = "smtp.gmail.com"
-        smtpSession.username = "sanipcr7@gmail.com"
-        smtpSession.password = "Cristiano7"
+        smtpSession.username = "***"
+        smtpSession.password = "****"
         smtpSession.port = 465
         smtpSession.authType = MCOAuthType.saslPlain
         smtpSession.connectionType = MCOConnectionType.TLS

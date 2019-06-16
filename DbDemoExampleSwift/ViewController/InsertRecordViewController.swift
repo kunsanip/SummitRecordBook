@@ -15,7 +15,6 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var txtVisitReason: UITextField!
     @IBOutlet weak var picker: UIPickerView!
     
-    
     var CompanyName: String = String()
     var CompanyEmailAddress: String = String()
     var CompanyEmailAddressPassword : String = String()
@@ -28,10 +27,7 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
     var isEdit : Bool = false
     var customerData : CustomerInfo!
     
-    
-    
     var placementAnswer = 0
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,62 +37,50 @@ class InsertRecordViewController: UIViewController, UIPickerViewDelegate, UIPick
         CompanyEmailAddressPassword = presenter.modelManager.getInstance().companyEmailPassword
         CompanyEmailHost = presenter.modelManager.getInstance().emailHost
         CompanyPortNumber = presenter.modelManager.getInstance().portNumber
- 
         
         self.txtFirstName.delegate = self;
         self.txtEmailAddress.delegate = self;
         self.txtLastName.delegate = self;
         self.txtPhoneNumber.delegate = self;
         self.txtVisitReason.delegate = self;
+        
         // Connect data:
         self.picker.delegate = self
         self.picker.dataSource = self
         pickerData = presenter.getPickerItem()
         
-        
         if(isEdit)
         {
-            
-            
             txtFirstName.text = customerData.FirstName
             txtLastName.text = customerData.LastName
             txtEmailAddress.text = customerData.EmailAddress
-            
             txtPhoneNumber.text = customerData.PhoneNumber
-            
-            
             txtVisitReason.text = customerData.ReasonVisit
-            
-            
-            
         }
-        
-        
-        // Do any additional setup after loading the view.
     }
     
     
-    override var prefersStatusBarHidden: Bool {
+    override var prefersStatusBarHidden: Bool
+    {
         return true
     }
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     // The number of columns of data
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int
+    {
         return 1
-        
-        
-        
-        
     }
     
     
     
     // The number of rows of data
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
         return pickerData.count
         
     }

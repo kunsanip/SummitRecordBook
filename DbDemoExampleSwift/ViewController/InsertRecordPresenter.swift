@@ -22,12 +22,7 @@ class InsertRecordPresenter{
     
     //MARK: LYNDA for MVP tranform
     var validation: Validation! = Validation()
-    
-    
-    //MARK: LYNDA for MVP transform
     var emailHandling: Email! = Email()
-    
-    
     
     func emailValidation(emailAddress: String) -> Bool{
         let valid = validation.isValidEmail(email: emailAddress)
