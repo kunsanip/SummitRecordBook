@@ -18,12 +18,12 @@ class CustomersPresenter {
 //MARK: Home Screen View Controller Presenter
 extension CustomersPresenter{
     
-    func getCustomerData()
+    func getCustomerData() -> NSMutableArray
     {
         marrCustomerData = NSMutableArray()
         marrCustomerData = modelManager.getInstance().getAllCustomerData()
         
-        
+        return marrCustomerData
     }
     
     //MARK: FIRST NAME SORTED

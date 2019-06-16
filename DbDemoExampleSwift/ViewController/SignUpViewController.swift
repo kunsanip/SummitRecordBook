@@ -8,42 +8,35 @@
 
 import UIKit
 
-
-
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
-    
-    //MARK: TEXTFIELDS
-    
     //TEXTFIELD: USERNAME
     @IBOutlet weak var txtUsername: UITextField!
     
-    //TEXTFIELD: USERNAME
+    //TEXTFIELD: Email address
     @IBOutlet weak var txtEmailAddress: UITextField!
     
-    //TEXTFIELD: USERNAME
+    //TEXTFIELD: Password
     @IBOutlet weak var txtPassword: UITextField!
  
-    //TEXTFIELD: USERNAME
+    //TEXTFIELD: REENTER PASSWORD
     @IBOutlet weak var txtReEnteredPassword: UITextField!
  
-    //TEXTFIELD: USERNAME
+    //TEXTFIELD: COMPANY NAME
     @IBOutlet weak var txtCompanyName: UITextField!
 
-    //TEXTFIELD: USERNAME
+    //TEXTFIELD: EMAIL PASSWORD
     @IBOutlet weak var txtEmailPassword: UITextField!
 
-    //TEXTFIELD: USERNAME
+    //TEXTFIELD: EMAIL HOST
     @IBOutlet weak var txtEmailHost: UITextField!
     
-    //TEXTFIELD: USERNAME
+    //TEXTFIELD: PORTNUMBER
     @IBOutlet weak var txtPortNumber: UITextField!
-    
     
     //OBJECT: SIGNUPPRESENTER
     fileprivate var presenter: SignUpPresenter!
-    
-    
+
     //INITIALIZER: VIEWDIDLOAD METHOD
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,9 +46,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.txtCompanyName.delegate = self;
         self.txtReEnteredPassword.delegate = self;
         self.txtEmailHost.delegate = self;
-       self.txtPortNumber.delegate = self;
+        self.txtPortNumber.delegate = self;
         presenter = SignUpPresenter()
-        // Do any additional setup after loading the view.
     }
     
     //METHOD: STATUS BAR HIDDEN
@@ -67,7 +59,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
     
     //METHOD: BUTTON SIGNUP - WHEN USER SIGNS UP TO CREATE NEW ACCOUNT
     @IBAction func btnSignUp(_ sender: AnyObject) {
@@ -107,8 +98,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
      
         else if (presenter.checkUsername(companyInfo: companyInfo) == false){
             Util.invokeAlertMethod("", strBody: "This username has already been taken. Please enter different username.", delegate: nil)
-
-            
         }
         else if(emailVal == false)
         {
@@ -125,42 +114,31 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             Util.invokeAlertMethod("", strBody: "Please enter Email Host Address.", delegate: nil)
         }
             
-            
         else if(txtPortNumber.text == "")
         {
             Util.invokeAlertMethod("", strBody: "Please enter Port Number.", delegate: nil)
         }
             
-            
         else{
-     
         let isInserted = presenter.addCompanyData(companyInfo: companyInfo)
         if isInserted {
             Util.invokeAlertMethod("", strBody: "Your account has been successfully created.", delegate: nil)
             self.performSegue(withIdentifier: "SignIn", sender: sender)
-
-            
-        } else {
+        } else{
             Util.invokeAlertMethod("", strBody: "Error in creating account.", delegate: nil)
-            }}
-        
-
-
+            }
+        }
     }
- 
  
     //SEGUE: I HAVE AN ACCOUNT - FORWARDS TO THE HOME SCREEN
-    @IBAction func btnIHaveAccount(_ sender: Any) {
-        
+    @IBAction func btnIHaveAccount(_ sender: Any)
+    {
         self.performSegue(withIdentifier: "SignIn", sender: sender)
-
     }
-    
-   
-    
-    
+
     //VIEW: TEXTFIELDSHOULDRETURN
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
         self.view.endEditing(true)
         return false
     }

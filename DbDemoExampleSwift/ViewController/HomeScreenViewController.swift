@@ -1,8 +1,4 @@
-
-
 import UIKit
-
-
 
 class HomeScreenViewController: UIViewController , UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
@@ -38,8 +34,8 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource, UITabl
     
     @IBAction func txtLogOut(_ sender: AnyObject) {
         self.performSegue(withIdentifier: "logout1", sender: sender)
-        
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         self.view.endEditing(true)
@@ -75,10 +71,8 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource, UITabl
             refresh()
         }
     }
-    
-    
+
     //MARK: UITableView delegate methods
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.marrCustomerData.count
     }
@@ -87,15 +81,68 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource, UITabl
         let cell:StudentCell = tableView.dequeueReusableCell(withIdentifier: "cell") as! StudentCell
         let customer:CustomerInfo = presenter.marrCustomerData.object(at: (indexPath as NSIndexPath).row) as! CustomerInfo
         
-        cell.lblContent.text = "\(customer.FirstName)"
-        cell.lblLastName.text = "\(customer.LastName)"
+        cell.lblContent.text = "\(customer.FirstName) \(customer.LastName)"
         cell.lblEmailAddress.text = "\(customer.EmailAddress)"
         cell.lblPhoneNumber.text = "\(customer.PhoneNumber)"
         cell.lblVisitReason.text = "\(customer.ReasonVisit)"
         cell.lblTimeStamp.text = "\(customer.TimeStamp)"
-        cell.btnDelete.tag = (indexPath as NSIndexPath).row
-        cell.btnEdit.tag = (indexPath as NSIndexPath).row
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+  
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Create the alert controller
+            let alertController = UIAlertController(title: "Warning", message: "Are you sure want to delete this record", preferredStyle: .alert)
+            
+            // Create the actions
+            let okAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) {
+                UIAlertAction in
+                let customerInfo: CustomerInfo = self.presenter.marrCustomerData.object(at: indexPath.row) as! CustomerInfo
+                let isDeleted = self.presenter.deleteCustomerData(customerInfo: customerInfo)
+                
+                if isDeleted {
+                    Util.invokeAlertMethod("", strBody: "Record deleted successfully.", delegate: nil)
+                } else {
+                    Util.invokeAlertMethod("", strBody: "Error in deleting record.", delegate: nil)
+                }
+                
+                self.refresh()
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+                UIAlertAction in
+                NSLog("Cancel Pressed")
+            }
+            
+            // Add the actions
+            alertController.addAction(okAction)
+            alertController.addAction(cancelAction)
+            
+            // Present the controller
+            self.present(alertController, animated: true, completion: nil)
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+         self.performSegue(withIdentifier: "editSegue", sender: self)
+    }
+    
+    
+    //MARK: Navigation methods
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editSegue" ,
+            let viewController = segue.destination as? InsertRecordViewController ,
+            let indexPath = self.tbCustomerData.indexPathForSelectedRow {
+            viewController.isEdit = true
+            viewController.customerData = self.presenter.marrCustomerData.object(at:indexPath.row ) as! CustomerInfo
+        }
     }
     
     @IBAction func sortByFirstName(_ sender: AnyObject)
@@ -175,30 +222,14 @@ class HomeScreenViewController: UIViewController , UITableViewDataSource, UITabl
         
     }
     
-    
     @IBAction func btnEditClicked(_ sender: AnyObject)
     {
-        self.performSegue(withIdentifier: "editSegue", sender: sender)
+       
     }
-    
-    //MARK: Navigation methods
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "editSegue")
-        {
-            let btnEdit : UIButton = sender as! UIButton
-            let selectedIndex : Int = btnEdit.tag
-            let viewController : InsertRecordViewController = segue.destination as! InsertRecordViewController
-            viewController.isEdit = true
-            viewController.customerData = self.presenter.marrCustomerData.object(at: selectedIndex) as! CustomerInfo
-        }
-    }
-    
-    
-    private func refresh(){
+
+    private func refresh()
+    {
         tbCustomerData.reloadData()
-        
-        
     }
     
 }

@@ -24,7 +24,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DbDemoExampleSwift/ViewController/InsertRecordViewController.swift"
-            timestampString = "517819033.031241"
+            timestampString = "582381598.469154"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "6"
@@ -117,12 +117,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DbDemoExampleSwift/ViewController/InsertRecordViewController.swift"
-            timestampString = "525167066.868791"
+            timestampString = "582381598.469234"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "pickerView(_:didSelectRow:inComponent:)"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "pickerView(_:numberOfRowsInComponent:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -212,11 +212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DbDemoExampleSwift/ViewController/InsertRecordPresenter.swift"
-            timestampString = "525343149.791677"
+            timestampString = "582381598.4693201"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "sendCustomerEmail(name:emailAddress:companyName:companyAddress:companyPassword:companyHost:companyPortNumber:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -228,7 +228,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DbDemoExampleSwift/Model/DataLayer.swift"
-            timestampString = "582360502.575121"
+            timestampString = "582367618.608433"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "60"
@@ -244,7 +244,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DbDemoExampleSwift/Model/DataLayer.swift"
-            timestampString = "582360502.576947"
+            timestampString = "582367618.608484"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "63"
@@ -260,11 +260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DbDemoExampleSwift/ViewController/InsertRecordViewController.swift"
-            timestampString = "525344370.797674"
+            timestampString = "582381598.469399"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -276,11 +276,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DbDemoExampleSwift/ViewController/InsertRecordPresenter.swift"
-            timestampString = "525344443.885279"
+            timestampString = "582381598.469443"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70">
+            startingLineNumber = "65"
+            endingLineNumber = "65">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -322,11 +322,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DbDemoExampleSwift/ViewController/SignUpViewController.swift"
-            timestampString = "525346560.561482"
+            timestampString = "582381598.46952"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "btnSignUp(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -338,11 +338,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DbDemoExampleSwift/ViewController/SignUpViewController.swift"
-            timestampString = "525346560.561482"
+            timestampString = "582381598.469563"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "btnSignUp(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -354,7 +354,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DbDemoExampleSwift/ViewController/SignUpPresenter.swift"
-            timestampString = "525347144.548962"
+            timestampString = "582381598.469617"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
@@ -370,7 +370,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DbDemoExampleSwift/ViewController/SignUpPresenter.swift"
-            timestampString = "525347192.633541"
+            timestampString = "582381598.4696651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
@@ -402,11 +402,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DbDemoExampleSwift/ViewController/SignUpViewController.swift"
-            timestampString = "525346560.561482"
+            timestampString = "582381598.469725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "btnSignUp(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -418,7 +418,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DbDemoExampleSwift/Model/DataLayer.swift"
-            timestampString = "582360502.577461"
+            timestampString = "582367618.608905"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "168"
@@ -434,7 +434,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DbDemoExampleSwift/Model/DataLayer.swift"
-            timestampString = "582360502.5783449"
+            timestampString = "582367618.60895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "167"
@@ -450,12 +450,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DbDemoExampleSwift/Model/DataLayer.swift"
-            timestampString = "582360502.580236"
+            timestampString = "582367618.60899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "175"
             endingLineNumber = "175"
             landmarkName = "getSortedByFirstName()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DbDemoExampleSwift/ViewController/LogInViewController.swift"
+            timestampString = "582381598.469815"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "LogIn(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DbDemoExampleSwift/ViewController/CustomersViewController.swift"
+            timestampString = "582381598.46987"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DbDemoExampleSwift/ViewController/CustomersViewController.swift"
+            timestampString = "582381598.4699219"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

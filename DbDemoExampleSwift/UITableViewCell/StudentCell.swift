@@ -5,18 +5,11 @@ import UIKit
 class StudentCell: UITableViewCell {
 
     @IBOutlet weak var lblContent: UILabel!
-    
-    @IBOutlet weak var lblLastName: UILabel!
-    
     @IBOutlet weak var lblEmailAddress: UILabel!
-  
     @IBOutlet weak var lblPhoneNumber: UILabel!
-    
     @IBOutlet weak var lblVisitReason: UILabel!
     @IBOutlet weak var lblTimeStamp: UILabel!
-    @IBOutlet weak var btnEdit: UIButton!
-    @IBOutlet weak var btnDelete: UIButton!
-    
+   
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

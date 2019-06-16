@@ -22,15 +22,15 @@ class CustomersViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return presenter.marrCustomerData.count
+        return presenter.getCustomerData().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:StudentInfoTableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! StudentInfoTableViewCell
-        let customer:CustomerInfo = presenter.marrCustomerData.object(at: (indexPath as NSIndexPath).row) as! CustomerInfo
+        let customer:CustomerInfo = presenter.getCustomerData().object(at: (indexPath as NSIndexPath).row) as! CustomerInfo
         
-        cell.studentName.text = customer.FirstName
-        
+        cell.studentName.text = "\(customer.FirstName)"
+        print("Hello : \(cell.studentName.text)")
         return cell
     }
 }
